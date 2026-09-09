@@ -1,75 +1,307 @@
-import { useState } from 'react'
-import { profile } from './data/profile'
-import { experience, education } from './data/experience'
-import { publications } from './data/publications'
-import { patents, skillGroups, adventures, researchLife } from './data/portfolio'
-import { asset } from './lib/asset'
-import './wix-replica.css'
+import type { CSSProperties } from "react";
+import { publications } from "./data/publications";
+import { experience } from "./data/experience";
+import { adventures, researchLife } from "./data/portfolio";
+import { profile } from "./data/profile";
+import { asset } from "./lib/asset";
+import "./wix-replica.css";
 
-const background = (path: string) => ({ backgroundImage: `url("${asset(path)}")` })
+const bg = (src: string) =>
+  ({ "--bg": `url("${asset(src)}")` }) as CSSProperties;
+const skills = [
+  ["Machine Learning", 92],
+  ["Deep Learning", 90],
+  ["Computer Vision", 88],
+  ["Python / MATLAB", 86],
+  ["Image Processing", 84],
+  ["Data Science", 82],
+  ["Research", 94],
+  ["Teaching", 80],
+] as const;
+const hobbyLabels = [
+  "Skydiving",
+  "Hiking",
+  "Workout",
+  "Bowling",
+  "Driving",
+  "Swimming",
+  "Riding Bike",
+  "Jet Ski",
+  "Parasailing",
+  "Rubik’s Cube",
+];
 
 export default function App() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  return <div className="wix-replica">
-    <header className="wix-nav">
-      <a className="wix-logo" href="#home">JT</a>
-      <button className="wix-menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen}>Menu</button>
-      <nav className={menuOpen ? 'open' : ''} onClick={() => setMenuOpen(false)}>
-        <a href="#about">About</a><a href="#skills">Skills</a><a href="#publications">Publications</a>
-        <a href="#experience">Experience</a><a href="#life">Life</a><a href="#contact">Contact</a>
-      </nav>
-    </header>
-    <main>
-      <section id="home" className="photo-panel hero-panel" style={background('media/images/adventure-motorcycle.webp')}>
-        <div className="hero-note">Highly motivated individual aiming to achieve high career growth through continuous learning.</div>
-        <div className="hero-name"><span>HI! I’M</span><h1>JAGRATI<br/>TALREJA</h1><p>Ph.D. · Data Science & Machine Learning<br/>AI/ML Engineer · Geospatial Data Scientist</p></div>
-        <a className="scroll-cue" href="#about">Scroll ↓</a>
-      </section>
-
-      <section id="about" className="light-panel compact-about">
-        <p className="kicker">ABOUT</p><h2>Dr. Jagrati Talreja</h2><p>{profile.statement}</p>
-        <div className="quick-links"><a href={asset(profile.documents.resume)} target="_blank">Résumé</a><a href={asset(profile.documents.cv)} target="_blank">Curriculum Vitae</a></div>
-      </section>
-
-      <section id="skills" className="photo-panel skills-panel" style={background('media/images/portrait-editorial.webp')}>
-        <div className="section-card"><p className="kicker">PROFESSIONAL</p><h2>SKILLS</h2>
-          <div className="skill-lines">{skillGroups.slice(0, 7).map((group, i) => <div key={group.name}><span>{group.name}</span><i style={{width:`${92-i*4}%`}} /></div>)}</div>
-        </div>
-      </section>
-
-      <section id="publications" className="dark-photo-panel" style={background('media/images/medicart-hardware.webp')}>
-        <div className="paper-sheet"><p className="kicker">RESEARCH</p><h2>PUBLICATIONS</h2>
-          <div className="paper-list">{publications.map(pub => <article key={pub.id}><span>{pub.year}</span><div><h3>{pub.title}</h3><p>{pub.venue}</p></div>{pub.doi ? <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noreferrer">DOI</a> : <em>{pub.status}</em>}</article>)}</div>
-          <div className="patent-strip"><h2>PATENTS</h2>{patents.map(p => <div key={p.id}><b>{p.title}</b><span>{p.number}</span></div>)}</div>
-        </div>
-      </section>
-
-      <section id="experience" className="timeline-panel">
-        <div><p className="kicker">EDUCATION & EXPERIENCE</p><div className="timeline-title"><h2>Ph.D.<br/>Research<br/>Graduate</h2><span>Chulalongkorn University, Thailand</span></div></div>
-        <div className="timeline-list">
-          {experience.map(role => <article key={role.id}><time>{role.period}</time><div><h3>{role.title}</h3><h4>{role.org}</h4><p>{role.scope}</p></div></article>)}
-          {education.map(degree => <article key={degree.id}><time>{degree.period}</time><div><h3>{degree.qualification}</h3><h4>{degree.institution}</h4><p>{degree.detail}</p></div></article>)}
-        </div>
-      </section>
-
-      <section className="photo-panel credentials-panel" style={background('media/images/chula-engineering.webp')}>
-        <p className="kicker">ACHIEVEMENTS</p><h2>CERTIFICATES & MILESTONES</h2>
-        <div className="credential-grid">{['award.webp','graduation.webp','chula-poster.webp','talk-superres.webp'].map((img,i)=><img key={img} src={asset(`media/images/${img}`)} alt={['Academic award','Doctoral graduation','Research poster','Research presentation'][i]} loading="lazy"/>)}</div>
-      </section>
-
-      <section id="life" className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
-        <div className="video-wall">{adventures.map(item => <figure key={item.id} className={item.span === 'wide' ? 'wide' : ''}>
-          {item.type === 'video' ? <video muted loop playsInline controls poster={item.poster ? asset(item.poster) : undefined}><source src={asset(item.media)} type="video/mp4"/></video> : <img src={asset(item.media)} alt={item.alt} loading="lazy"/>}
-          <figcaption>{item.title}</figcaption></figure>)}</div>
-      </section>
-
-      <section className="moments-panel"><p className="kicker">MOMENTS</p><h2>RESEARCH · COMMUNITY · TRAVEL</h2>
-        <div className="moments-grid">{researchLife.map(frame => <figure key={frame.src}><img src={asset(frame.src)} alt={frame.alt} loading="lazy"/><figcaption>{frame.caption}</figcaption></figure>)}</div>
-      </section>
-
-      <section id="contact" className="contact-panel"><div><p className="kicker">CONTACT</p><h2>Let’s connect.</h2><p>Greensboro, North Carolina</p><a href={`mailto:${profile.links.email}`}>{profile.links.email}</a></div>
-        <div className="contact-links"><a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a><a href={asset(profile.documents.cv)} target="_blank">CV</a></div>
-      </section>
-    </main>
-  </div>
+  return (
+    <div className="wix-copy">
+      <header className="topline">
+        <a href="#home" className="mark">
+          JAGRATI TALREJA
+        </a>
+        <nav>
+          <a href="#skills">ABOUT</a>
+          <a href="#portfolio">PORTFOLIO</a>
+          <a href="#experience">EXPERIENCE</a>
+          <a href="#hobbies">HOBBIES</a>
+          <a href="#contact">CONTACT</a>
+        </nav>
+      </header>
+      <main>
+        <section
+          id="home"
+          className="scene hero"
+          style={bg("media/images/adventure-motorcycle.webp")}
+        >
+          <p className="black-ribbon">
+            “Highly motivated individual aiming to achieve high career growth
+            through continuous learning and personally contribute to the growth
+            of the organization.”
+          </p>
+          <div className="hero-copy">
+            <span className="nasa">NASA</span>
+            <h1>
+              HI! I’M
+              <br />
+              JAGRATI
+              <br />
+              TALREJA
+            </h1>
+            <div className="rule" />
+            <p>
+              AI / MACHINE LEARNING RESEARCHER
+              <br />
+              COMPUTER VISION · REMOTE SENSING
+              <br />
+              DATA SCIENCE
+            </p>
+          </div>
+        </section>
+        <section
+          id="skills"
+          className="scene portrait"
+          style={bg("media/images/portrait-editorial.webp")}
+        >
+          <div className="skills-copy">
+            <h2>PROFESSIONAL</h2>
+            <span>SKILLS</span>
+            {skills.map(([name, amount]) => (
+              <div className="skill" key={name}>
+                <small>{name}</small>
+                <i>
+                  <b style={{ width: `${amount}%` }} />
+                </i>
+              </div>
+            ))}
+          </div>
+          <div className="mini-columns">
+            <div>
+              <h3>ACHIEVEMENTS</h3>
+              <p>
+                Gold Medalist
+                <br />
+                C2F Scholarship
+                <br />
+                Research Scholarships
+                <br />
+                Academic Excellence
+              </p>
+            </div>
+            <div>
+              <h3>RESEARCH INTERESTS</h3>
+              <p>
+                Artificial Intelligence
+                <br />
+                Deep Learning
+                <br />
+                Computer Vision
+                <br />
+                Remote Sensing
+                <br />
+                Image Super-Resolution
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="portfolio" className="publication-stage">
+          <div className="portfolio-heading">
+            <h2>PORTFOLIO</h2>
+            <p>PUBLICATIONS AND PATENTS</p>
+          </div>
+          <div className="publication-paper">
+            <h3>PUBLISHED / ACCEPTED ARTICLES</h3>
+            <ol>
+              {publications.map((p) => (
+                <li key={p.id}>
+                  <b>{p.title}</b>
+                  <span>
+                    {p.venue}
+                    {p.year ? ` · ${p.year}` : ""}
+                  </span>
+                </li>
+              ))}
+            </ol>
+            <h3>ARTICLES UNDER REVIEW</h3>
+            <p className="dense-copy">
+              Research in multimodal remote sensing, flood mapping,
+              physics-informed learning, quantum encoding and satellite image
+              enhancement.
+            </p>
+            <h3>PATENT</h3>
+            <p className="dense-copy">
+              Medi-Cart: Telemetry using RFID · SafePath: Navigate to Safety
+            </p>
+          </div>
+        </section>
+        <section
+          id="experience"
+          className="experience-stage"
+          style={bg("media/images/portrait-about.webp")}
+        >
+          <h2>EXPERIENCE</h2>
+          <div className="experience-list">
+            {experience.map((job, i) => (
+              <article key={job.id}>
+                <div>
+                  <small>{job.org}</small>
+                  <h3>{job.title.replace(/, /g, "\n").replace(" — ", "\n")}</h3>
+                  <time>{job.period}</time>
+                </div>
+                <p>{job.scope}</p>
+                <span className="vertical-index">0{i + 1}</span>
+              </article>
+            ))}
+          </div>
+        </section>
+        <section
+          className="certificates-stage"
+          style={bg("media/images/medicart-hardware.webp")}
+        >
+          <h2>CERTIFICATES</h2>
+          <div className="certificate-grid">
+            {[
+              "award.webp",
+              "graduation.webp",
+              "chula-poster.webp",
+              "talk-superres.webp",
+              "talk-podium.webp",
+              "gisday-booth.webp",
+            ].map((x, i) => (
+              <figure key={x}>
+                <img
+                  src={asset(`media/images/${x}`)}
+                  alt="Certificate and academic milestone"
+                />
+                <figcaption>
+                  {
+                    [
+                      "ACADEMIC EXCELLENCE",
+                      "DOCTORAL DEGREE",
+                      "RESEARCH UNIT",
+                      "CONFERENCE",
+                      "PRESENTATION",
+                      "RECOGNITION",
+                    ][i]
+                  }
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+        <section id="hobbies" className="hobbies-stage">
+          <h2>HOBBIES</h2>
+          <div className="hobby-grid">
+            {[...adventures, ...adventures.slice(0, 2)].map((item, i) => (
+              <figure key={`${item.id}-${i}`}>
+                {item.type === "video" ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={item.poster ? asset(item.poster) : undefined}
+                  >
+                    <source src={asset(item.media)} type="video/mp4" />
+                  </video>
+                ) : (
+                  <img src={asset(item.media)} alt={item.alt} />
+                )}
+                <figcaption>{hobbyLabels[i]}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+        <section className="vision-stage">
+          <div>
+            <h2>GROW YOUR VISION</h2>
+            <p>
+              An experience enriched by research, innovation, leadership and a
+              life beyond the laboratory.
+            </p>
+          </div>
+          <div className="vision-images">
+            <img
+              src={asset("media/images/talk-igarss.webp")}
+              alt="Conference presentation"
+            />
+            <img
+              src={asset("media/images/talk-superres.webp")}
+              alt="Research presentation"
+            />
+          </div>
+        </section>
+        <section className="photo-story">
+          <div className="story-grid">
+            {researchLife.map((frame, i) => (
+              <figure key={frame.src} className={`p${i + 1}`}>
+                <img src={asset(frame.src)} alt={frame.alt} />
+              </figure>
+            ))}
+          </div>
+        </section>
+        <section className="closing-video">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={asset("media/posters/cv-demo.webp")}
+          >
+            <source src={asset("media/videos/cv-demo.mp4")} type="video/mp4" />
+          </video>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={asset("media/posters/gym.webp")}
+          >
+            <source src={asset("media/videos/gym.mp4")} type="video/mp4" />
+          </video>
+        </section>
+        <section
+          id="contact"
+          className="contact-stage"
+          style={bg("media/images/hero-geoweek.webp")}
+        >
+          <div>
+            <h2>CONTACT</h2>
+            <p>{profile.location}</p>
+            <a href={`mailto:${profile.links.email}`}>{profile.links.email}</a>
+            <p>Connect with me</p>
+            <a href={profile.links.linkedin}>LinkedIn</a> ·{" "}
+            <a href={profile.links.github}>GitHub</a>
+          </div>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <div>
+              <input aria-label="First name" placeholder="First Name" />
+              <input aria-label="Last name" placeholder="Last Name" />
+            </div>
+            <input aria-label="Email" placeholder="Email" type="email" />
+            <textarea aria-label="Message" placeholder="Write a message" />
+            <button type="submit">SEND</button>
+          </form>
+        </section>
+      </main>
+    </div>
+  );
 }
