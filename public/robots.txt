@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://JagratiTalreja01.github.io/jagrati-talreja-portfolio/sitemap.xml

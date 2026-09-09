@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dr. Jagrati Talreja — Redirecting…</title>
+    <script>
+      // GitHub Pages SPA redirect — restores the path as a query parameter
+      // so the single-page app can re-route to it.
+      const seg = window.location.pathname
+        .split('/')
+        .slice(2)
+        .join('/')
+      const query = seg
+        ? '?p=/' + seg.replace(/&/g, '~and~') + window.location.search.slice(1).replace(/&/g, '~and~')
+        : ''
+      window.location.replace(
+        window.location.protocol + '//' + window.location.hostname +
+        window.location.pathname.split('/').slice(0, 2).join('/') +
+        '/#' + window.location.pathname.split('/').slice(2).join('/') +
+        window.location.search + window.location.hash
+      )
+    </script>
+  </head>
+  <body>
+    <p style="font-family:system-ui;color:#8CA0BD;padding:2rem">Redirecting…</p>
+  </body>
+</html>
