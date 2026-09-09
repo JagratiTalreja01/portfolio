@@ -35,7 +35,7 @@ jobs:
         # Update this if you rename the repository.
         run: npm run build
         env:
-          VITE_BASE: /jagrati-talreja-portfolio/
+          VITE_BASE: /portfolio/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

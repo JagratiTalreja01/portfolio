@@ -27,6 +27,7 @@ export const profile = {
     academicEmail: 'jtalreja@ncat.edu',
     github: 'https://github.com/JagratiTalreja01',
     linkedin: 'https://www.linkedin.com/in/dr-jagrati-talreja-phd-113054136',
+    wix: 'https://talrejajagrati01.wixsite.com/tj01',
     // Fill these in and the icons appear automatically.
     scholar: '[ADD GOOGLE SCHOLAR URL]',
     orcid: '[ADD ORCID URL]',
@@ -43,7 +44,7 @@ export const profile = {
     description:
       'Portfolio of Dr. Jagrati Talreja, an AI research scientist and machine learning engineer specializing in computer vision, multimodal AI, remote sensing, geospatial intelligence and quantum machine learning.',
     // Set this to your final Pages URL for canonical + Open Graph tags.
-    siteUrl: 'https://JagratiTalreja01.github.io/jagrati-talreja-portfolio/',
+    siteUrl: 'https://JagratiTalreja01.github.io/portfolio/',
   },
 } as const
 

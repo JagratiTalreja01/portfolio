@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 // - Project site  -> https://USER.github.io/REPO/   => base must be "/REPO/"
 // - User site     -> https://USER.github.io/        => base must be "/"
 // The deploy workflow sets VITE_BASE automatically from the repository name.
-const base = process.env.VITE_BASE ?? '/jagrati-talreja-portfolio/'
+const base = process.env.VITE_BASE ?? '/portfolio/'
 
 export default defineConfig({
   base,

@@ -2,7 +2,7 @@
 
 A production-grade personal portfolio for Dr. Jagrati Talreja, AI Research Scientist & Machine Learning Engineer at North Carolina A&T State University. Built with React, Vite, TypeScript, Tailwind CSS, and Three.js.
 
-Live site: **[https://JagratiTalreja01.github.io/jagrati-talreja-portfolio/](https://JagratiTalreja01.github.io/jagrati-talreja-portfolio/)**
+Live site: **[https://JagratiTalreja01.github.io/portfolio/](https://JagratiTalreja01.github.io/portfolio/)**
 
 ---
 
@@ -10,13 +10,13 @@ Live site: **[https://JagratiTalreja01.github.io/jagrati-talreja-portfolio/](htt
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/JagratiTalreja01/jagrati-talreja-portfolio.git
-cd jagrati-talreja-portfolio
+git clone https://github.com/JagratiTalreja01/portfolio.git
+cd portfolio
 
 # 2. Install dependencies
 npm install
 
-# 3. Start the dev server (auto-opens http://localhost:5173/jagrati-talreja-portfolio/)
+# 3. Start the dev server (auto-opens http://localhost:5173/portfolio/)
 npm run dev
 ```
 
@@ -42,10 +42,10 @@ npm run build
 
 ### Automatic deployment via GitHub Actions
 
-1. Push this repository to `https://github.com/JagratiTalreja01/jagrati-talreja-portfolio`.
+1. Push this repository to `https://github.com/JagratiTalreja01/portfolio`.
 2. In repository **Settings → Pages**, set source to **GitHub Actions**.
 3. Every push to `main` triggers `.github/workflows/deploy.yml`, which builds and deploys automatically.
-4. The site will be live at `https://JagratiTalreja01.github.io/jagrati-talreja-portfolio/`.
+4. The site will be live at `https://JagratiTalreja01.github.io/portfolio/`.
 
 If you rename the repository, update `VITE_BASE` in the workflow file to match the new name.
 
