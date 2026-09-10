@@ -17,23 +17,30 @@ export default function App() {
     if (!section) return
 
     const videos = Array.from(section.querySelectorAll('video'))
+    let sectionVisible = false
+
     const playAll = () => videos.forEach(video => {
+      video.defaultMuted = true
       video.muted = true
-      video.play().catch(() => undefined)
+      void video.play().catch(() => undefined)
     })
     const pauseAll = () => videos.forEach(video => video.pause())
+    const handleCanPlay = () => {
+      if (sectionVisible) playAll()
+    }
 
     const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) playAll()
+      sectionVisible = entry.isIntersecting
+      if (sectionVisible) playAll()
       else pauseAll()
-    }, { threshold: 0.08 })
+    }, { threshold: 0, rootMargin: '1px 0px' })
 
-    videos.forEach(video => video.addEventListener('canplay', playAll))
+    videos.forEach(video => video.addEventListener('canplay', handleCanPlay))
     observer.observe(section)
 
     return () => {
       observer.disconnect()
-      videos.forEach(video => video.removeEventListener('canplay', playAll))
+      videos.forEach(video => video.removeEventListener('canplay', handleCanPlay))
       pauseAll()
     }
   }, [])
@@ -113,7 +120,7 @@ export default function App() {
             ['08-parasailing.mp4', 'Parasailing'],
             ['09-rubiks-cube.mp4', "Rubik's Cube"],
           ].map(([src, title]) => <figure key={src}>
-            <video muted loop playsInline preload="auto" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
+            <video autoPlay muted loop playsInline preload="auto" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
             <figcaption>{title}</figcaption>
           </figure>)}
         </div>
