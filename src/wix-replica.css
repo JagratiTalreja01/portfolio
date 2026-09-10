@@ -12,3 +12,15 @@
 .timeline-group>h3{margin:0 0 30px;color:#16855c;font-size:.9rem;letter-spacing:.24em}
 .timeline-title h2{font-size:clamp(3rem,5.5vw,6.4rem)}
 @media(max-width:760px){.hero-note{font-size:.82rem}.timeline-groups{gap:50px}}
+
+
+/* Research and milestone refinements */
+.research-panel{display:grid;grid-template-columns:minmax(220px,.55fr) minmax(0,1.45fr);gap:4vw;align-items:start}
+.research-heading{position:relative;z-index:2;position:sticky;top:120px;align-self:start;padding-top:28px}
+.research-heading h2{margin:0;color:var(--lime);font-size:clamp(4rem,7vw,8.5rem);line-height:.82;letter-spacing:.08em;writing-mode:vertical-rl;transform:rotate(180deg)}
+.patent-strip h2{font-size:clamp(2.8rem,4.8vw,5.4rem);letter-spacing:.12em;margin:.1em 0 .5em}
+.milestone-gallery{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:1180px;margin:0 auto}
+.milestone-gallery img,.milestone-gallery video{display:block;width:100%;height:auto;background:#050505;border:1px solid #ffffff24;box-shadow:0 18px 40px #0008}
+.milestone-gallery video{aspect-ratio:16/9;object-fit:cover}
+@media(max-width:900px){.research-panel{grid-template-columns:1fr}.research-heading{position:relative;top:auto;padding-top:0}.research-heading h2{writing-mode:horizontal-tb;transform:none;font-size:clamp(3.2rem,13vw,6rem)}}
+@media(max-width:700px){.milestone-gallery{grid-template-columns:1fr;gap:16px}}

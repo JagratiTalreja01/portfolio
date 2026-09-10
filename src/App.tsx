@@ -37,12 +37,12 @@ export default function App() {
         </div>
       </section>
 
-      <section id="publications" className="dark-photo-panel" style={background('media/images/talk-igarss.webp')}>
+      <section id="publications" className="dark-photo-panel research-panel" style={background('media/images/talk-igarss.webp')}>
+        <div className="research-heading"><h2>RESEARCH</h2></div>
         <div className="paper-sheet">
-          <p className="kicker">RESEARCH</p>
           <div className="patent-strip patent-first"><h2>PATENTS</h2>{patents.map(p => <div key={p.id}><b>{p.title}</b><span>{p.number}</span></div>)}</div>
           <h2>PUBLICATIONS</h2>
-          <div className="paper-list">{publications.map(pub => <article key={pub.id}><span>{pub.year}</span><div><h3>{pub.title}</h3><p>{pub.venue}</p></div>{pub.doi ? <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noreferrer">DOI</a> : <em>{pub.status}</em>}</article>)}</div>
+          <div className="paper-list">{publications.filter(pub => pub.status !== 'under-review').map(pub => <article key={pub.id}><span>{pub.year}</span><div><h3>{pub.title}</h3><p>{pub.venue}</p></div>{pub.doi ? <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noreferrer">DOI</a> : <em>{pub.status}</em>}</article>)}</div>
         </div>
       </section>
 
@@ -60,7 +60,21 @@ export default function App() {
 
       <section className="photo-panel credentials-panel" style={background('media/images/chula-engineering.webp')}>
         <p className="kicker">ACHIEVEMENTS</p><h2>CERTIFICATES & MILESTONES</h2>
-        <div className="credential-grid">{['award.webp','graduation.webp','chula-poster.webp','talk-superres.webp'].map((img,i)=><img key={img} src={asset(`media/images/${img}`)} alt={['Academic award','Doctoral graduation','Research poster','Research presentation'][i]} loading="lazy"/>)}</div>
+        <div className="milestone-gallery">
+          {[
+            ['milestones/conference-presentations.webp', 'Conference presentations and professional milestones'],
+            ['milestones/research-community-one.webp', 'Research teams and conference community'],
+            ['milestones/research-community-two.webp', 'Research collaboration and outreach'],
+            ['milestones/community-and-lab.webp', 'Academic community and laboratory teams'],
+          ].map(([src, alt]) => <img key={src} src={asset(`media/images/${src}`)} alt={alt} loading="lazy"/>)}
+          <video muted loop playsInline controls poster={asset('media/posters/cv-demo.webp')}>
+            <source src={asset('media/videos/cv-demo.mp4')} type="video/mp4"/>
+          </video>
+          {[
+            ['milestones/student-projects.webp', 'Student research and aircraft projects'],
+            ['milestones/engineering-prototypes.webp', 'Aircraft, robotics and embedded systems prototypes'],
+          ].map(([src, alt]) => <img key={src} src={asset(`media/images/${src}`)} alt={alt} loading="lazy"/>)}
+        </div>
       </section>
 
       <section id="life" className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
