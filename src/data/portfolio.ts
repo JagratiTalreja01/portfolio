@@ -387,8 +387,8 @@ export const momentsSequence: MomentMedia[] = [
   { src: 'media/moments/23-prototype-team.JPG', type: 'image', alt: 'Student team holding an engineering prototype.', layout: 'half' },
   { src: 'media/moments/24-aircraft-prototype.jpg', type: 'image', alt: 'Fixed-wing aircraft prototype on a field.', layout: 'half' },
   { src: 'media/moments/25-medicart-hardware.jpg', type: 'image', alt: 'RFID and microcontroller hardware for the Medi-Cart project.', layout: 'half' },
-  { src: 'media/moments/26-aircraft-demo-hq.mp4', poster: 'media/moments/26-aircraft-demo-hq-poster.webp', type: 'video', alt: 'Aircraft prototype demonstration video.', layout: 'half' },
-  { src: 'media/moments/27-hardware-demo-hq.mp4', poster: 'media/moments/27-hardware-demo-hq-poster.webp', type: 'video', alt: 'Medi-Cart hardware demonstration video.', layout: 'half' },
+  { src: 'media/moments/26-aircraft-demo-h264.mp4', poster: 'media/moments/26-aircraft-demo-hq-poster.webp', type: 'video', alt: 'Aircraft prototype demonstration video.', layout: 'half' },
+  { src: 'media/moments/27-hardware-demo-h264.mp4', poster: 'media/moments/27-hardware-demo-hq-poster.webp', type: 'video', alt: 'Medi-Cart hardware demonstration video.', layout: 'half' },
 ]
 
 export const researchLife: Frame[] = [
