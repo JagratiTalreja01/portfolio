@@ -52,3 +52,9 @@
 .adventure-reels figcaption{width:max-content;max-width:100%;margin:-1px auto 0;padding:5px 10px;background:#f1f1f1;color:#080808;font-size:1rem;font-style:italic;line-height:1.1}
 @media(max-width:760px){.adventure-reels{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}}
 @media(max-width:460px){.adventure-reels{grid-template-columns:1fr;max-width:330px}}
+
+
+/* Match the tall Wix reel proportions and label scale */
+.adventure-reels{max-width:940px;gap:48px 48px}
+.adventure-reels video{aspect-ratio:9/16;object-fit:cover}
+.adventure-reels figcaption{font-size:clamp(1.35rem,2.1vw,1.85rem);padding:4px 8px;font-weight:500}
