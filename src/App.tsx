@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { profile } from './data/profile'
 import { experience, education } from './data/experience'
 import { publications } from './data/publications'
@@ -10,6 +10,34 @@ const background = (path: string) => ({ backgroundImage: `url("${asset(path)}")`
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const adventureRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const section = adventureRef.current
+    if (!section) return
+
+    const videos = Array.from(section.querySelectorAll('video'))
+    const playAll = () => videos.forEach(video => {
+      video.muted = true
+      video.play().catch(() => undefined)
+    })
+    const pauseAll = () => videos.forEach(video => video.pause())
+
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) playAll()
+      else pauseAll()
+    }, { threshold: 0.08 })
+
+    videos.forEach(video => video.addEventListener('canplay', playAll))
+    observer.observe(section)
+
+    return () => {
+      observer.disconnect()
+      videos.forEach(video => video.removeEventListener('canplay', playAll))
+      pauseAll()
+    }
+  }, [])
+
   return <div className="wix-replica">
     <header className="wix-nav">
       <a className="wix-logo" href="#home">JT</a>
@@ -72,7 +100,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="life" className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
+      <section id="life" ref={adventureRef} className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
         <div className="adventure-reels">
           {[
             ['01-skydiving.mp4', 'Skydiving'],
@@ -85,7 +113,7 @@ export default function App() {
             ['08-parasailing.mp4', 'Parasailing'],
             ['09-rubiks-cube.mp4', "Rubik's Cube"],
           ].map(([src, title]) => <figure key={src}>
-            <video muted loop playsInline controls preload="metadata" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
+            <video muted loop playsInline preload="auto" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
             <figcaption>{title}</figcaption>
           </figure>)}
         </div>
