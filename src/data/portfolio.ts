@@ -352,6 +352,44 @@ export interface Frame {
   year?: string
 }
 
+export interface MomentMedia {
+  src: string
+  type: 'image' | 'video'
+  alt: string
+  layout: 'half' | 'portrait' | 'third' | 'wide' | 'narrow' | 'full'
+  poster?: string
+}
+
+/** Exact top-to-bottom media sequence used in the Wix Research, Community & Travel section. */
+export const momentsSequence: MomentMedia[] = [
+  { src: 'media/moments/01-conference-podium.webp', type: 'image', alt: 'Presenting remote-sensing research at a conference podium.', layout: 'half' },
+  { src: 'media/moments/02-igarss-presentation.webp', type: 'image', alt: 'Presenting cross-polarization fusion research at IGARSS.', layout: 'half' },
+  { src: 'media/moments/03-ieee-conference-group.webp', type: 'image', alt: 'Group photograph with colleagues at an IEEE conference.', layout: 'wide' },
+  { src: 'media/moments/04-community-reel.mp4', poster: 'media/moments/04-community-reel-poster.webp', type: 'video', alt: 'Research and community highlights video.', layout: 'portrait' },
+  { src: 'media/moments/05-ncat-lab-team.webp', type: 'image', alt: 'Research team in the laboratory at North Carolina A&T.', layout: 'half' },
+  { src: 'media/moments/06-ncat-lab-community.webp', type: 'image', alt: 'Students and researchers gathering in the laboratory.', layout: 'half' },
+  { src: 'media/moments/07-recognition.webp', type: 'image', alt: 'Receiving recognition with academic colleagues.', layout: 'third' },
+  { src: 'media/moments/08-gis-day.webp', type: 'image', alt: 'Representing North Carolina A&T at GIS Day.', layout: 'third' },
+  { src: 'media/moments/09-ieee-community.webp', type: 'image', alt: 'With colleagues at an IEEE event.', layout: 'third' },
+  { src: 'media/moments/10-research-group.webp', type: 'image', alt: 'Research group photograph in the laboratory.', layout: 'half' },
+  { src: 'media/moments/11-community-outdoors.webp', type: 'image', alt: 'Community gathering outdoors on campus.', layout: 'half' },
+  { src: 'media/moments/12-bowling.webp', type: 'image', alt: 'Bowling with friends and colleagues.', layout: 'half' },
+  { src: 'media/moments/13-professional-group.webp', type: 'image', alt: 'Professional group photograph at an event.', layout: 'half' },
+  { src: 'media/moments/14-poster-team.webp', type: 'image', alt: 'Research team presenting the Medi-Cart project poster.', layout: 'half' },
+  { src: 'media/moments/15-travel-community.webp', type: 'image', alt: 'Travel photograph with an international student group.', layout: 'half' },
+  { src: 'media/moments/16-phd-highlights.mp4', poster: 'media/moments/16-phd-highlights-poster.webp', type: 'video', alt: 'PhD and research highlights video.', layout: 'wide' },
+  { src: 'media/moments/17-phd-collage.webp', type: 'image', alt: 'Collage celebrating completion of the PhD.', layout: 'narrow' },
+  { src: 'media/moments/18-ieee-better-world.webp', type: 'image', alt: 'IEEE Better World event group photograph.', layout: 'half' },
+  { src: 'media/moments/19-classroom-team.webp', type: 'image', alt: 'Classroom and research team group photograph.', layout: 'half' },
+  { src: 'media/moments/20-community-montage.mp4', poster: 'media/moments/20-community-montage-poster.webp', type: 'video', alt: 'Community and research montage video.', layout: 'full' },
+  { src: 'media/moments/21-student-team.webp', type: 'image', alt: 'Student team gathered outdoors.', layout: 'half' },
+  { src: 'media/moments/22-prototype-team.webp', type: 'image', alt: 'Student team holding an engineering prototype.', layout: 'half' },
+  { src: 'media/moments/23-aircraft-prototype.webp', type: 'image', alt: 'Fixed-wing aircraft prototype on a field.', layout: 'half' },
+  { src: 'media/moments/24-medicart-hardware.webp', type: 'image', alt: 'RFID and microcontroller hardware for the Medi-Cart project.', layout: 'half' },
+  { src: 'media/moments/25-aircraft-demo.mp4', poster: 'media/moments/25-aircraft-demo-poster.webp', type: 'video', alt: 'Aircraft prototype demonstration video.', layout: 'half' },
+  { src: 'media/moments/26-hardware-demo.mp4', poster: 'media/moments/26-hardware-demo-poster.webp', type: 'video', alt: 'Medi-Cart hardware demonstration video.', layout: 'half' },
+]
+
 export const researchLife: Frame[] = [
   {
     src: 'media/images/talk-igarss.webp',
