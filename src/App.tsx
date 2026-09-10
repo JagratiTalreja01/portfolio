@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { profile } from './data/profile'
 import { experience, education } from './data/experience'
 import { publications } from './data/publications'
-import { patents, skillGroups, adventures, researchLife } from './data/portfolio'
+import { patents, skillGroups, researchLife } from './data/portfolio'
 import { asset } from './lib/asset'
 import './wix-replica.css'
 
@@ -73,9 +73,22 @@ export default function App() {
       </section>
 
       <section id="life" className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
-        <div className="video-wall">{adventures.map(item => <figure key={item.id} className={item.span === 'wide' ? 'wide' : ''}>
-          {item.type === 'video' ? <video muted loop playsInline controls poster={item.poster ? asset(item.poster) : undefined}><source src={asset(item.media)} type="video/mp4"/></video> : <img src={asset(item.media)} alt={item.alt} loading="lazy"/>}
-          <figcaption>{item.title}</figcaption></figure>)}</div>
+        <div className="adventure-reels">
+          {[
+            ['01-skydiving.mp4', 'Skydiving'],
+            ['02-driving.mp4', 'Driving'],
+            ['03-bowling.mp4', 'Bowling'],
+            ['04-swimming.mp4', 'Swimming'],
+            ['05-workout.mp4', 'Workout'],
+            ['06-biking.mp4', 'Biking'],
+            ['07-jetski.mp4', 'Jet Ski'],
+            ['08-parasailing.mp4', 'Parasailing'],
+            ['09-rubiks-cube.mp4', "Rubik's Cube"],
+          ].map(([src, title]) => <figure key={src}>
+            <video muted loop playsInline controls preload="metadata" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
+            <figcaption>{title}</figcaption>
+          </figure>)}
+        </div>
       </section>
 
       <section className="moments-panel"><p className="kicker">MOMENTS</p><h2>RESEARCH · COMMUNITY · TRAVEL</h2>

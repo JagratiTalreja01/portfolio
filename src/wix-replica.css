@@ -43,3 +43,12 @@
 .certificate-gallery img{display:block;width:100%;aspect-ratio:1.405/1;object-fit:contain;background:#fff;transition:transform .25s ease}
 .certificate-gallery a:hover img{transform:scale(1.015)}
 @media(max-width:760px){.certificate-gallery{grid-template-columns:1fr;gap:18px}}
+
+
+/* Instagram-style 3 × 3 adventure reels */
+.adventure-reels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 26px;max-width:980px;margin:0 auto}
+.adventure-reels figure{margin:0;min-width:0}
+.adventure-reels video{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;background:#111;border:1px solid #ffffff25;box-shadow:0 18px 42px #000a}
+.adventure-reels figcaption{width:max-content;max-width:100%;margin:-1px auto 0;padding:5px 10px;background:#f1f1f1;color:#080808;font-size:1rem;font-style:italic;line-height:1.1}
+@media(max-width:760px){.adventure-reels{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 14px}}
+@media(max-width:460px){.adventure-reels{grid-template-columns:1fr;max-width:330px}}
