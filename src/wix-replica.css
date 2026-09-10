@@ -35,3 +35,11 @@
 .milestone-gallery.wix-sequence .portrait-tile{object-position:center}
 .milestone-gallery.wix-sequence video{height:100%;min-height:360px}
 @media(max-width:850px){.milestone-gallery.wix-sequence .span-4,.milestone-gallery.wix-sequence .span-6,.milestone-gallery.wix-sequence .span-8{grid-column:span 12}.milestone-gallery.wix-sequence img,.milestone-gallery.wix-sequence video{height:auto;min-height:0}}
+
+
+/* Certificates-only milestone gallery */
+.certificate-gallery{position:relative;z-index:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;max-width:1180px;margin:0 auto}
+.certificate-gallery a{display:block;background:#fff;border:1px solid #ffffff35;box-shadow:0 18px 42px #0009;overflow:hidden}
+.certificate-gallery img{display:block;width:100%;aspect-ratio:1.405/1;object-fit:contain;background:#fff;transition:transform .25s ease}
+.certificate-gallery a:hover img{transform:scale(1.015)}
+@media(max-width:760px){.certificate-gallery{grid-template-columns:1fr;gap:18px}}
