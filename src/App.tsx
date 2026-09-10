@@ -17,31 +17,46 @@ export default function App() {
     if (!section) return
 
     const videos = Array.from(section.querySelectorAll('video'))
-    let sectionVisible = false
+    const visibleVideos = new Set<HTMLVideoElement>()
 
-    const playAll = () => videos.forEach(video => {
+    const startVideo = (video: HTMLVideoElement) => {
       video.defaultMuted = true
       video.muted = true
       void video.play().catch(() => undefined)
-    })
-    const pauseAll = () => videos.forEach(video => video.pause())
-    const handleCanPlay = () => {
-      if (sectionVisible) playAll()
     }
 
-    const observer = new IntersectionObserver(([entry]) => {
-      sectionVisible = entry.isIntersecting
-      if (sectionVisible) playAll()
-      else pauseAll()
-    }, { threshold: 0, rootMargin: '1px 0px' })
+    const handleReady = (event: Event) => {
+      const video = event.currentTarget as HTMLVideoElement
+      if (visibleVideos.has(video)) startVideo(video)
+    }
 
-    videos.forEach(video => video.addEventListener('canplay', handleCanPlay))
-    observer.observe(section)
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const video = entry.target as HTMLVideoElement
+        if (entry.isIntersecting) {
+          visibleVideos.add(video)
+          startVideo(video)
+        } else {
+          visibleVideos.delete(video)
+          video.pause()
+        }
+      })
+    }, { threshold: 0.1, rootMargin: '150px 0px' })
+
+    videos.forEach(video => {
+      video.addEventListener('canplay', handleReady)
+      video.addEventListener('loadeddata', handleReady)
+      observer.observe(video)
+    })
 
     return () => {
       observer.disconnect()
-      videos.forEach(video => video.removeEventListener('canplay', handleCanPlay))
-      pauseAll()
+      videos.forEach(video => {
+        video.removeEventListener('canplay', handleReady)
+        video.removeEventListener('loadeddata', handleReady)
+        video.pause()
+      })
+      visibleVideos.clear()
     }
   }, [])
 
@@ -120,7 +135,7 @@ export default function App() {
             ['08-parasailing.mp4', 'Parasailing'],
             ['09-rubiks-cube.mp4', "Rubik's Cube"],
           ].map(([src, title]) => <figure key={src}>
-            <video autoPlay muted loop playsInline preload="auto" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
+            <video autoPlay muted loop playsInline preload="metadata" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
             <figcaption>{title}</figcaption>
           </figure>)}
         </div>
