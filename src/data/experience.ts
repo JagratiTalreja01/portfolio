@@ -48,21 +48,6 @@ export const experience: Role[] = [
     stack: ['PyTorch', 'CUDA', 'cuDNN', 'FPGA', 'SoC', 'MATLAB', 'OpenCV', 'Raspberry Pi'],
   },
   {
-    id: 'chula-ta',
-    org: 'Chulalongkorn University',
-    title: 'Teaching Assistant, Faculty of Engineering',
-    location: 'Bangkok, Thailand',
-    period: 'Aug 2020 — 2024',
-    scope:
-      'Curriculum development and instruction for computer vision and digital signal processing.',
-    points: [
-      'Developed electrical engineering curriculum materials for computer vision and digital signal processing.',
-      'Delivered lectures and ran labs on image and video processing, pairing theory with practical tooling.',
-      'Designed assignments, projects and exams, and gave feedback across the cohort.',
-    ],
-    stack: ['Computer vision', 'DSP', 'Mentorship'],
-  },
-  {
     id: 'iitk',
     org: 'Indian Institute of Technology Kanpur',
     title: 'Research Assistant / Intern, Electrical Engineering',

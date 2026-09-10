@@ -31,24 +31,30 @@ export default function App() {
         <div className="quick-links"><a href={asset(profile.documents.resume)} target="_blank">Résumé</a><a href={asset(profile.documents.cv)} target="_blank">Curriculum Vitae</a></div>
       </section>
 
-      <section id="skills" className="photo-panel skills-panel" style={background('media/images/portrait-editorial.webp')}>
+      <section id="skills" className="photo-panel skills-panel" style={background('media/images/black-jacket-portrait.webp')}>
         <div className="section-card"><p className="kicker">PROFESSIONAL</p><h2>SKILLS</h2>
           <div className="skill-lines">{skillGroups.slice(0, 7).map((group, i) => <div key={group.name}><span>{group.name}</span><i style={{width:`${92-i*4}%`}} /></div>)}</div>
         </div>
       </section>
 
-      <section id="publications" className="dark-photo-panel" style={background('media/images/medicart-hardware.webp')}>
-        <div className="paper-sheet"><p className="kicker">RESEARCH</p><h2>PUBLICATIONS</h2>
+      <section id="publications" className="dark-photo-panel" style={background('media/images/talk-igarss.webp')}>
+        <div className="paper-sheet">
+          <p className="kicker">RESEARCH</p>
+          <div className="patent-strip patent-first"><h2>PATENTS</h2>{patents.map(p => <div key={p.id}><b>{p.title}</b><span>{p.number}</span></div>)}</div>
+          <h2>PUBLICATIONS</h2>
           <div className="paper-list">{publications.map(pub => <article key={pub.id}><span>{pub.year}</span><div><h3>{pub.title}</h3><p>{pub.venue}</p></div>{pub.doi ? <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noreferrer">DOI</a> : <em>{pub.status}</em>}</article>)}</div>
-          <div className="patent-strip"><h2>PATENTS</h2>{patents.map(p => <div key={p.id}><b>{p.title}</b><span>{p.number}</span></div>)}</div>
         </div>
       </section>
 
       <section id="experience" className="timeline-panel">
-        <div><p className="kicker">EDUCATION & EXPERIENCE</p><div className="timeline-title"><h2>Ph.D.<br/>Research<br/>Graduate</h2><span>Chulalongkorn University, Thailand</span></div></div>
-        <div className="timeline-list">
-          {experience.map(role => <article key={role.id}><time>{role.period}</time><div><h3>{role.title}</h3><h4>{role.org}</h4><p>{role.scope}</p></div></article>)}
-          {education.map(degree => <article key={degree.id}><time>{degree.period}</time><div><h3>{degree.qualification}</h3><h4>{degree.institution}</h4><p>{degree.detail}</p></div></article>)}
+        <div className="timeline-title"><p className="kicker">CAREER & ACADEMICS</p><h2>EDUCATION<br/>& EXPERIENCE</h2></div>
+        <div className="timeline-groups">
+          <section className="timeline-group"><h3>WORK EXPERIENCE</h3><div className="timeline-list">
+            {experience.map(role => <article key={role.id}><time>{role.period}</time><div><h3>{role.title}</h3><h4>{role.org}</h4><p>{role.scope}</p></div></article>)}
+          </div></section>
+          <section className="timeline-group"><h3>EDUCATION</h3><div className="timeline-list">
+            {education.map(degree => <article key={degree.id}><time>{degree.period}</time><div><h3>{degree.qualification}</h3><h4>{degree.institution}</h4><p>{degree.detail}</p></div></article>)}
+          </div></section>
         </div>
       </section>
 

@@ -128,14 +128,16 @@ export const publications: Publication[] = [
     title:
       'SARGANet: A GAN-U-Net Hybrid Framework for Super-Resolution of Sentinel-1 SAR Imagery',
     authors: ['J. Talreja', 'L. H. Beni'],
-    venue: 'Earth Science Informatics',
+    venue: 'Earth Science Informatics, 19(8), Article 115',
     year: 2026,
     type: 'journal',
-    status: 'accepted',
+    status: 'published',
+    doi: '10.1007/s12145-026-02164-0',
+    url: 'https://doi.org/10.1007/s12145-026-02164-0',
     topics: ['Super-resolution', 'Remote sensing', 'Generative models'],
     featured: true,
     abstract:
-      'A GAN and U-Net hybrid for super-resolving Sentinel-1 SAR imagery. [VERIFY: no public repository or DOI supplied yet.]',
+      'A GAN and U-Net hybrid for super-resolving Sentinel-1 SAR imagery.',
   },
   {
     id: 'cpf',

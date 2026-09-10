@@ -2,3 +2,13 @@
 @media(max-width:850px){.wix-menu{display:block}.wix-nav nav{display:none;position:absolute;top:64px;left:0;right:0;background:#070707;padding:24px;flex-direction:column}.wix-nav nav.open{display:flex}.hero-panel{justify-content:flex-start;background-position:57% center}.hero-note{top:15%;font-size:.7rem;max-width:37ch}.hero-name{width:86%;margin:0 7vw;background:#00000059;padding:24px}.timeline-panel{grid-template-columns:1fr}.timeline-title{position:relative;top:0}.video-wall{grid-template-columns:repeat(2,1fr)}.moments-grid{grid-template-columns:repeat(2,1fr)}.contact-panel{flex-direction:column;align-items:flex-start}.paper-sheet{padding:25px}.skill-lines>div{grid-template-columns:1fr}}
 @media(max-width:520px){.hero-name h1{font-size:3rem}.hero-note{display:none}.credential-grid,.video-wall,.moments-grid{grid-template-columns:1fr}.video-wall figure.wide{grid-column:auto}.paper-list article{grid-template-columns:45px 1fr}.paper-list article>a,.paper-list article>em{grid-column:2}.timeline-panel,.black-panel,.credentials-panel,.moments-panel,.light-panel{padding:6rem 24px}.timeline-list article{grid-template-columns:1fr}.section-card{padding:25px}}
 @media(prefers-reduced-motion:reduce){.photo-panel,.dark-photo-panel{background-attachment:scroll}}
+
+
+/* Requested portfolio refinements */
+.hero-note{font-size:1.08rem}
+.skills-panel{background-position:center 38%}
+.patent-first{margin:0 0 55px;border-top:0;border-bottom:2px solid var(--lime);padding:0 0 25px}
+.timeline-groups{display:grid;gap:70px}
+.timeline-group>h3{margin:0 0 30px;color:#16855c;font-size:.9rem;letter-spacing:.24em}
+.timeline-title h2{font-size:clamp(3rem,5.5vw,6.4rem)}
+@media(max-width:760px){.hero-note{font-size:.82rem}.timeline-groups{gap:50px}}
