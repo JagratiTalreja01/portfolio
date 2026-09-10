@@ -34,6 +34,12 @@ export default function App() {
       if (adventureVideos.includes(video) ? adventureSectionVisible : visibleVideos.has(video)) startVideo(video)
     }
 
+    const keepAdventurePlaying = (event: Event) => {
+      if (!adventureSectionVisible || document.visibilityState !== 'visible') return
+      const video = event.currentTarget as HTMLVideoElement
+      window.setTimeout(() => startVideo(video), 0)
+    }
+
     const videoObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         const video = entry.target as HTMLVideoElement
@@ -65,6 +71,10 @@ export default function App() {
       video.addEventListener('canplay', handleReady)
       video.addEventListener('loadeddata', handleReady)
     })
+    adventureVideos.forEach(video => {
+      video.addEventListener('pause', keepAdventurePlaying)
+      video.addEventListener('ended', keepAdventurePlaying)
+    })
     otherVideos.forEach(video => videoObserver.observe(video))
     if (adventureSection) adventureObserver.observe(adventureSection)
     document.addEventListener('visibilitychange', resumeVisibleVideos)
@@ -73,6 +83,11 @@ export default function App() {
       videoObserver.disconnect()
       adventureObserver.disconnect()
       document.removeEventListener('visibilitychange', resumeVisibleVideos)
+      adventureSectionVisible = false
+      adventureVideos.forEach(video => {
+        video.removeEventListener('pause', keepAdventurePlaying)
+        video.removeEventListener('ended', keepAdventurePlaying)
+      })
       videos.forEach(video => {
         video.removeEventListener('canplay', handleReady)
         video.removeEventListener('loadeddata', handleReady)
