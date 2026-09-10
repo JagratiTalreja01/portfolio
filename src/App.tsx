@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { profile } from './data/profile'
 import { experience, education } from './data/experience'
 import { publications } from './data/publications'
-import { patents, skillGroups, researchLife } from './data/portfolio'
+import { momentsSequence, patents, skillGroups } from './data/portfolio'
 import { asset } from './lib/asset'
 import './wix-replica.css'
 
@@ -10,13 +10,13 @@ const background = (path: string) => ({ backgroundImage: `url("${asset(path)}")`
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const adventureRef = useRef<HTMLElement>(null)
+  const mediaRootRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const section = adventureRef.current
-    if (!section) return
+    const mediaRoot = mediaRootRef.current
+    if (!mediaRoot) return
 
-    const videos = Array.from(section.querySelectorAll('video'))
+    const videos = Array.from(mediaRoot.querySelectorAll('video'))
     const visibleVideos = new Set<HTMLVideoElement>()
 
     const startVideo = (video: HTMLVideoElement) => {
@@ -60,7 +60,7 @@ export default function App() {
     }
   }, [])
 
-  return <div className="wix-replica">
+  return <div ref={mediaRootRef} className="wix-replica">
     <header className="wix-nav">
       <a className="wix-logo" href="#home">JT</a>
       <button className="wix-menu" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen}>Menu</button>
@@ -122,7 +122,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="life" ref={adventureRef} className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
+      <section id="life" className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
         <div className="adventure-reels">
           {[
             ['01-skydiving.mp4', 'Skydiving'],
@@ -142,7 +142,14 @@ export default function App() {
       </section>
 
       <section className="moments-panel"><p className="kicker">MOMENTS</p><h2>RESEARCH · COMMUNITY · TRAVEL</h2>
-        <div className="moments-grid">{researchLife.map(frame => <figure key={frame.src}><img src={asset(frame.src)} alt={frame.alt} loading="lazy"/><figcaption>{frame.caption}</figcaption></figure>)}</div>
+        <div className="wix-moments-grid">
+          {momentsSequence.map(item => <figure key={item.src} className={item.layout}>
+            {item.type === 'video' ?
+              <video autoPlay muted loop playsInline preload="metadata" poster={asset(item.poster!)} aria-label={item.alt}><source src={asset(item.src)} type="video/mp4"/></video> :
+              <img src={asset(item.src)} alt={item.alt} loading="lazy"/>
+            }
+          </figure>)}
+        </div>
       </section>
 
       <section id="contact" className="contact-panel"><div><p className="kicker">CONTACT</p><h2>Let’s connect.</h2><p>Greensboro, North Carolina</p><a href={`mailto:${profile.links.email}`}>{profile.links.email}</a></div>

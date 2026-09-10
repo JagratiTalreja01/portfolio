@@ -3,6 +3,11 @@
 @media(max-width:520px){.hero-name h1{font-size:3rem}.hero-note{display:none}.credential-grid,.video-wall,.moments-grid{grid-template-columns:1fr}.video-wall figure.wide{grid-column:auto}.paper-list article{grid-template-columns:45px 1fr}.paper-list article>a,.paper-list article>em{grid-column:2}.timeline-panel,.black-panel,.credentials-panel,.moments-panel,.light-panel{padding:6rem 24px}.timeline-list article{grid-template-columns:1fr}.section-card{padding:25px}}
 @media(prefers-reduced-motion:reduce){.photo-panel,.dark-photo-panel{background-attachment:scroll}}
 
+/* Research, Community & Travel — ordered and proportioned like the Wix gallery. */
+.wix-moments-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:38px 30px;max-width:880px;margin:0 auto}.wix-moments-grid figure{margin:0;min-width:0;overflow:hidden;background:#111}.wix-moments-grid .half{grid-column:span 6;aspect-ratio:1.44/1}.wix-moments-grid .wide{grid-column:span 7;aspect-ratio:1.12/1}.wix-moments-grid .portrait{grid-column:span 5;aspect-ratio:.805/1}.wix-moments-grid .third{grid-column:span 4;aspect-ratio:.82/1}.wix-moments-grid .narrow{grid-column:span 5;aspect-ratio:.88/1}.wix-moments-grid .full{grid-column:span 12;aspect-ratio:2.24/1}.wix-moments-grid img,.wix-moments-grid video{display:block;width:100%;height:100%;object-fit:cover;background:#111}.wix-moments-grid video{border:0}
+@media(max-width:760px){.wix-moments-grid{gap:18px 14px}.wix-moments-grid .half,.wix-moments-grid .wide,.wix-moments-grid .portrait,.wix-moments-grid .third,.wix-moments-grid .narrow{grid-column:span 6;aspect-ratio:4/3}.wix-moments-grid .full{aspect-ratio:16/9}}
+@media(max-width:480px){.wix-moments-grid .half,.wix-moments-grid .wide,.wix-moments-grid .portrait,.wix-moments-grid .third,.wix-moments-grid .narrow,.wix-moments-grid .full{grid-column:span 12;aspect-ratio:auto}.wix-moments-grid img,.wix-moments-grid video{height:auto;max-height:78vh}.wix-moments-grid video{aspect-ratio:4/3;object-fit:cover}}
+
 
 /* Requested portfolio refinements */
 .hero-note{font-size:1.08rem}
