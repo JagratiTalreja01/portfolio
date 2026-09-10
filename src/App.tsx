@@ -60,20 +60,22 @@ export default function App() {
 
       <section className="photo-panel credentials-panel" style={background('media/images/chula-engineering.webp')}>
         <p className="kicker">ACHIEVEMENTS</p><h2>CERTIFICATES & MILESTONES</h2>
-        <div className="milestone-gallery">
-          {[
-            ['milestones/conference-presentations.webp', 'Conference presentations and professional milestones'],
-            ['milestones/research-community-one.webp', 'Research teams and conference community'],
-            ['milestones/research-community-two.webp', 'Research collaboration and outreach'],
-            ['milestones/community-and-lab.webp', 'Academic community and laboratory teams'],
-          ].map(([src, alt]) => <img key={src} src={asset(`media/images/${src}`)} alt={alt} loading="lazy"/>)}
-          <video muted loop playsInline controls poster={asset('media/posters/cv-demo.webp')}>
+        <div className="milestone-gallery wix-sequence">
+          <img className="span-6" src={asset('media/images/talk-podium.webp')} alt="Conference presentation at the podium" loading="lazy"/>
+          <img className="span-6" src={asset('media/images/talk-igarss.webp')} alt="IGARSS research presentation" loading="lazy"/>
+          <img className="span-4" src={asset('media/images/ieee-group.webp')} alt="IEEE conference group" loading="lazy"/>
+          <img className="span-8" src={asset('media/images/lab-ncat.webp')} alt="North Carolina A&T research team" loading="lazy"/>
+          <img className="span-4 portrait-tile" src={asset('media/images/award.webp')} alt="Academic award presentation" loading="lazy"/>
+          <img className="span-4 portrait-tile" src={asset('media/images/gisday-booth.webp')} alt="GIS Day outreach booth" loading="lazy"/>
+          <img className="span-4" src={asset('media/images/chula-poster.webp')} alt="Chulalongkorn research group and poster" loading="lazy"/>
+          <img className="span-6" src={asset('media/images/chula-engineering.webp')} alt="Chulalongkorn Engineering community" loading="lazy"/>
+          <img className="span-6" src={asset('media/images/lab-chula.webp')} alt="Chulalongkorn research laboratory" loading="lazy"/>
+          <img className="span-4 portrait-tile" src={asset('media/images/graduation.webp')} alt="Doctoral graduation milestone" loading="lazy"/>
+          <video className="span-8" muted loop playsInline controls poster={asset('media/posters/cv-demo.webp')}>
             <source src={asset('media/videos/cv-demo.mp4')} type="video/mp4"/>
           </video>
-          {[
-            ['milestones/student-projects.webp', 'Student research and aircraft projects'],
-            ['milestones/engineering-prototypes.webp', 'Aircraft, robotics and embedded systems prototypes'],
-          ].map(([src, alt]) => <img key={src} src={asset(`media/images/${src}`)} alt={alt} loading="lazy"/>)}
+          <img className="span-6" src={asset('media/images/aircraft-prototype.webp')} alt="Aircraft prototype project" loading="lazy"/>
+          <img className="span-6" src={asset('media/images/medicart-hardware.webp')} alt="Medi-Cart embedded hardware prototype" loading="lazy"/>
         </div>
       </section>
 
