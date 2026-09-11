@@ -66,10 +66,10 @@
 .adventure-play{display:block;margin:-1.5rem auto 3rem;padding:12px 20px;border:1px solid var(--lime);background:transparent;color:var(--lime);font:700 .78rem/1 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}.adventure-play:hover,.adventure-play:focus-visible{background:var(--lime);color:#080808}
 
 /* Preview: high-resolution Aurora background for Interests & Adventures */
-.adventure-panel{position:relative;isolation:isolate;overflow:hidden;background:#050505}
+.adventure-panel{position:relative;isolation:isolate;overflow:clip;background:#050505;padding:0}
 .adventure-panel::before{display:none}
-.adventure-panel>:not(.adventure-background-video){position:relative;z-index:2}
-.adventure-background-video{display:block;position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;filter:none;pointer-events:none}
+.adventure-content{position:relative;z-index:2;padding:8rem 7vw}
+.adventure-background-video{display:block;position:sticky;top:0;z-index:0;width:100%;height:100vh;margin-bottom:-100vh;object-fit:cover;object-position:center;opacity:1;filter:none;pointer-events:none}
 
 /* Keep all photographic and video backgrounds at their original brightness. */
 .hero-panel::after,.skills-panel::after,.dark-photo-panel::after,.credentials-panel::after,.adventure-panel::before{display:none}

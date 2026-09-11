@@ -226,6 +226,7 @@ export default function App() {
         <video className="adventure-background-video" autoPlay muted loop playsInline preload="auto" poster={asset('media/images/aurora-background-poster.webp')} aria-hidden="true" tabIndex={-1}>
           <source src={asset('media/videos/adventures/aurora-background.webm')} type="video/webm"/>
         </video>
+        <div className="adventure-content">
         <p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
         <button className="adventure-play" type="button" onClick={playVisibleAdventures}>▶ Play visible videos</button>
         <div className="adventure-reels">
@@ -243,6 +244,7 @@ export default function App() {
             <video autoPlay muted loop playsInline preload="metadata" controls controlsList="nodownload noplaybackrate" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
             <figcaption>{title}</figcaption>
           </figure>)}
+        </div>
         </div>
       </section>
 
