@@ -83,3 +83,10 @@
 .hero-panel{background:none;overflow:hidden}
 .hero-background-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:brightness(1.14) saturate(1.04);transform:scale(1.002)}
 @media(max-width:850px){.hero-background-image{object-position:57% center}}
+
+/* Full-bright video background for Research, Community & Travel. */
+.moments-panel{position:relative;isolation:isolate;overflow:clip;padding:0;background:#080808}
+.moments-background-video{display:block;position:sticky;top:0;z-index:0;width:100%;height:100vh;margin-bottom:-100vh;object-fit:cover;object-position:center;opacity:1;filter:none;pointer-events:none}
+.moments-content{position:relative;z-index:2;padding:8rem 10vw}
+.moments-content>h2{font-size:clamp(2.2rem,5vw,5.5rem);letter-spacing:.12em;margin:.15em 0 .6em}
+@media(max-width:520px){.moments-content{padding:6rem 24px}}

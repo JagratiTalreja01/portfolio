@@ -251,7 +251,11 @@ export default function App() {
         </div>
       </section>
 
-      <section className="moments-panel"><p className="kicker">MOMENTS</p><h2>RESEARCH · COMMUNITY · TRAVEL</h2>
+      <section className="moments-panel">
+        <video className="moments-background-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true" tabIndex={-1}>
+          <source src={asset('media/videos/moments-background.mp4')} type="video/mp4"/>
+        </video>
+        <div className="moments-content"><p className="kicker">MOMENTS</p><h2>RESEARCH · COMMUNITY · TRAVEL</h2>
         <div className="wix-moments-grid">
           {momentsSequence.map(item => <figure key={item.src} className={item.layout}>
             {item.type === 'video' ?
@@ -259,6 +263,7 @@ export default function App() {
               <img src={asset(item.src)} alt={item.alt} loading="lazy"/>
             }
           </figure>)}
+        </div>
         </div>
       </section>
 
