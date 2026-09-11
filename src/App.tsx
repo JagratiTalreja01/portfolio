@@ -218,12 +218,22 @@ export default function App() {
         </div>
       </section>
 
-      <section id="publications" className="dark-photo-panel research-panel" style={background('media/images/talk-igarss.webp')}>
+      <section id="publications" className="dark-photo-panel research-panel" style={background('media/images/geoweek-background.jpeg')}>
         <div className="research-heading"><h2>RESEARCH</h2></div>
         <div className="paper-sheet">
-          <div className="patent-strip patent-first"><h2>PATENTS</h2>{patents.map(p => <div key={p.id}><b>{p.title}</b><span>{p.number}</span></div>)}</div>
-          <h2>PUBLICATIONS</h2>
+          <div className="patent-strip patent-first"><div className="research-section-title"><h2>PATENTS</h2><img src={asset('media/images/patent-icon.png')} alt="Patented seal"/></div>{patents.map(p => <div key={p.id}><b>{p.title}</b><span>{p.number}</span></div>)}</div>
+          <div className="research-section-title"><h2>PUBLICATIONS</h2><img src={asset('media/images/publication-icon.png')} alt="Published research papers"/></div>
           <div className="paper-list">{publications.filter(pub => pub.status !== 'under-review').map(pub => <article key={pub.id}><span>{pub.year}</span><div><h3>{pub.title}</h3><p>{pub.venue}</p></div>{pub.doi ? <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noreferrer">DOI</a> : <em>{pub.status}</em>}</article>)}</div>
+          <section className="scholarship-strip">
+            <div className="research-section-title"><h2>SCHOLARSHIPS</h2><img src={asset('media/images/scholarship-icon.png')} alt="Scholarship"/></div>
+            <ul>
+              <li>Receiving a grant from NASA and NSF for research on deep learning-based remote sensing applications.</li>
+              <li>Received the highest five-year Ph.D. scholarship at Chulalongkorn University, Bangkok, Thailand: The Second Century Fund (C2F), High Efficiency Ph.D. Student, 1st Batch 2019.</li>
+              <li>Awarded the Overseas Research Experience Scholarship for Graduate Students, Fiscal Year 2024.</li>
+              <li>Honoured with the 90th Anniversary of Chulalongkorn University Scholarship under the Ratchadapisek Somphot Endowment Fund, receiving a Lenovo Legion 7i Gen 7 (16&quot;, 2023) and iPad Air 6 (2024).</li>
+              <li>Awarded a State Government scholarship with 65% tuition-fee support for maintaining 80% in undergraduate studies.</li>
+            </ul>
+          </section>
         </div>
       </section>
 

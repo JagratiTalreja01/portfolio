@@ -116,3 +116,13 @@
 .skills-details ul{margin:0;padding-left:19px;font-size:.85rem;line-height:1.42}
 @media(max-width:1050px){.skills-card{width:min(700px,64vw);margin-left:3vw;padding:32px}.skills-details{gap:24px}.skills-details ul{font-size:.78rem}}
 @media(max-width:760px){.skills-panel{place-items:center;padding:6rem 0}.skills-card{width:88vw;margin-left:0;padding:28px}.skills-details{grid-template-columns:1fr}.skills-card .skill-lines>div{grid-template-columns:1fr}}
+
+/* Research background and supplied visual markers. */
+.research-panel{background-position:center center}
+.research-section-title{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.research-section-title h2{font-size:clamp(2.8rem,4.8vw,5.4rem);letter-spacing:.12em;margin:.1em 0 .5em}
+.research-section-title img{width:clamp(82px,9vw,132px);max-height:110px;object-fit:contain;background:#fff;flex:0 0 auto}
+.patent-first>.research-section-title{padding:0;border:0}
+.scholarship-strip{margin-top:58px;padding-top:28px;border-top:2px solid var(--lime)}
+.scholarship-strip ul{margin:0;padding-left:20px;display:grid;gap:12px;color:#ddd;font-size:.88rem;line-height:1.55}
+@media(max-width:700px){.research-section-title{align-items:flex-start}.research-section-title img{width:78px;max-height:72px}.scholarship-strip{margin-top:42px}.scholarship-strip ul{font-size:.82rem}}
