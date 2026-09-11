@@ -21,7 +21,9 @@ export default function App() {
     const adventureVideos = videos.filter(video => video.closest('#life'))
     const otherVideos = videos.filter(video => !video.closest('#life'))
     const visibleVideos = new Set<HTMLVideoElement>()
+    const activeAdventureVideos = new Set<HTMLVideoElement>()
     let adventureSectionVisible = false
+    let adventureFrame = 0
 
     const startVideo = (video: HTMLVideoElement) => {
       video.defaultMuted = true
@@ -31,13 +33,49 @@ export default function App() {
 
     const handleReady = (event: Event) => {
       const video = event.currentTarget as HTMLVideoElement
-      if (adventureVideos.includes(video) ? adventureSectionVisible : visibleVideos.has(video)) startVideo(video)
+      if (adventureVideos.includes(video) ? activeAdventureVideos.has(video) : visibleVideos.has(video)) startVideo(video)
     }
 
     const keepAdventurePlaying = (event: Event) => {
-      if (!adventureSectionVisible || document.visibilityState !== 'visible') return
       const video = event.currentTarget as HTMLVideoElement
+      if (!activeAdventureVideos.has(video) || document.visibilityState !== 'visible') return
       window.setTimeout(() => startVideo(video), 0)
+    }
+
+    const syncAdventurePlayback = () => {
+      adventureFrame = 0
+      activeAdventureVideos.clear()
+      if (!adventureSectionVisible || document.visibilityState !== 'visible') {
+        adventureVideos.forEach(video => video.pause())
+        return
+      }
+
+      const visible = adventureVideos
+        .map(video => ({ video, rect: video.getBoundingClientRect() }))
+        .filter(({ rect }) => rect.bottom > 0 && rect.top < window.innerHeight)
+
+      if (!visible.length) return
+      const viewportCenter = window.innerHeight / 2
+      const activeRowTop = visible.reduce((best, item) => {
+        const itemDistance = Math.abs((item.rect.top + item.rect.bottom) / 2 - viewportCenter)
+        const bestDistance = Math.abs((best.rect.top + best.rect.bottom) / 2 - viewportCenter)
+        return itemDistance < bestDistance ? item : best
+      }).rect.top
+
+      adventureVideos.forEach(video => {
+        const active = Math.abs(video.getBoundingClientRect().top - activeRowTop) < 40
+        if (active) {
+          activeAdventureVideos.add(video)
+          startVideo(video)
+        } else {
+          video.pause()
+        }
+      })
+    }
+
+    const scheduleAdventurePlayback = () => {
+      if (adventureFrame) return
+      adventureFrame = window.requestAnimationFrame(syncAdventurePlayback)
     }
 
     const videoObserver = new IntersectionObserver(entries => {
@@ -55,15 +93,12 @@ export default function App() {
 
     const adventureObserver = new IntersectionObserver(([entry]) => {
       adventureSectionVisible = entry.isIntersecting
-      adventureVideos.forEach(video => {
-        if (adventureSectionVisible) startVideo(video)
-        else video.pause()
-      })
-    }, { threshold: 0, rootMargin: '120px 0px' })
+      scheduleAdventurePlayback()
+    }, { threshold: 0 })
 
     const resumeVisibleVideos = () => {
       if (document.visibilityState !== 'visible') return
-      if (adventureSectionVisible) adventureVideos.forEach(startVideo)
+      scheduleAdventurePlayback()
       visibleVideos.forEach(startVideo)
     }
 
@@ -77,13 +112,19 @@ export default function App() {
     })
     otherVideos.forEach(video => videoObserver.observe(video))
     if (adventureSection) adventureObserver.observe(adventureSection)
+    window.addEventListener('scroll', scheduleAdventurePlayback, { passive: true })
+    window.addEventListener('resize', scheduleAdventurePlayback)
     document.addEventListener('visibilitychange', resumeVisibleVideos)
 
     return () => {
       videoObserver.disconnect()
       adventureObserver.disconnect()
+      if (adventureFrame) window.cancelAnimationFrame(adventureFrame)
+      window.removeEventListener('scroll', scheduleAdventurePlayback)
+      window.removeEventListener('resize', scheduleAdventurePlayback)
       document.removeEventListener('visibilitychange', resumeVisibleVideos)
       adventureSectionVisible = false
+      activeAdventureVideos.clear()
       adventureVideos.forEach(video => {
         video.removeEventListener('pause', keepAdventurePlaying)
         video.removeEventListener('ended', keepAdventurePlaying)
@@ -172,7 +213,7 @@ export default function App() {
             ['08-parasailing.mp4', 'Parasailing'],
             ['09-rubiks-cube.mp4', "Rubik's Cube"],
           ].map(([src, title]) => <figure key={src}>
-            <video autoPlay muted loop playsInline preload="auto" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
+            <video autoPlay muted loop playsInline preload="metadata" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
             <figcaption>{title}</figcaption>
           </figure>)}
         </div>
