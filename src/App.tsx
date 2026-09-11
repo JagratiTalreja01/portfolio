@@ -138,6 +138,28 @@ export default function App() {
     }
   }, [])
 
+  const playVisibleAdventures = () => {
+    const videos = Array.from(mediaRootRef.current?.querySelectorAll<HTMLVideoElement>('#life video') ?? [])
+    const visible = videos
+      .map(video => ({ video, rect: video.getBoundingClientRect() }))
+      .filter(({ rect }) => rect.bottom > 0 && rect.top < window.innerHeight)
+    if (!visible.length) return
+
+    const viewportCenter = window.innerHeight / 2
+    const activeRowTop = visible.reduce((best, item) => {
+      const itemDistance = Math.abs((item.rect.top + item.rect.bottom) / 2 - viewportCenter)
+      const bestDistance = Math.abs((best.rect.top + best.rect.bottom) / 2 - viewportCenter)
+      return itemDistance < bestDistance ? item : best
+    }).rect.top
+
+    visible.forEach(({ video, rect }) => {
+      if (Math.abs(rect.top - activeRowTop) >= 40) return
+      video.defaultMuted = true
+      video.muted = true
+      void video.play().catch(() => undefined)
+    })
+  }
+
   return <div ref={mediaRootRef} className="wix-replica">
     <header className="wix-nav">
       <a className="wix-logo" href="#home">JT</a>
@@ -201,6 +223,7 @@ export default function App() {
       </section>
 
       <section id="life" className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
+        <button className="adventure-play" type="button" onClick={playVisibleAdventures}>▶ Play visible videos</button>
         <div className="adventure-reels">
           {[
             ['01-skydiving.mp4', 'Skydiving'],
@@ -213,7 +236,7 @@ export default function App() {
             ['08-parasailing.mp4', 'Parasailing'],
             ['09-rubiks-cube.mp4', "Rubik's Cube"],
           ].map(([src, title]) => <figure key={src}>
-            <video autoPlay muted loop playsInline preload="metadata" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
+            <video autoPlay muted loop playsInline preload="metadata" controls controlsList="nodownload noplaybackrate" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
             <figcaption>{title}</figcaption>
           </figure>)}
         </div>
