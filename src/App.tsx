@@ -171,7 +171,7 @@ export default function App() {
     </header>
     <main>
       <section id="home" className="photo-panel hero-panel">
-        <img className="hero-background-image" src={asset('media/images/adventure-motorcycle-bright.jpg')} alt="" aria-hidden="true"/>
+        <img className="hero-background-image" src={asset('media/images/adventure-motorcycle.jpg')} alt="" aria-hidden="true"/>
         <div className="hero-note">Highly motivated individual aiming to achieve high career growth through continuous learning.</div>
         <div className="hero-name"><span>HI! I’M</span><h1>JAGRATI<br/>TALREJA</h1><p>Ph.D. · Data Science & Machine Learning<br/>AI/ML Engineer · Geospatial Data Scientist</p></div>
         <a className="scroll-cue" href="#about">Scroll ↓</a>
