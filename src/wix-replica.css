@@ -67,11 +67,9 @@
 
 /* Preview: high-resolution Aurora background for Interests & Adventures */
 .adventure-panel{position:relative;isolation:isolate;overflow:hidden;background:#050505}
-.adventure-panel::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,#05050599 0%,#050505b8 22%,#050505d8 58%,#050505f2 100%)}
+.adventure-panel::before{display:none}
 .adventure-panel>:not(.adventure-background-video){position:relative;z-index:2}
-.adventure-background-video{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.56;filter:saturate(.9) contrast(1.05);pointer-events:none}
-@media(prefers-reduced-motion:reduce){.adventure-background-video{display:none}}
+.adventure-background-video{display:block;position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:1;filter:none;pointer-events:none}
 
 /* Keep all photographic and video backgrounds at their original brightness. */
 .hero-panel::after,.skills-panel::after,.dark-photo-panel::after,.credentials-panel::after,.adventure-panel::before{display:none}
-.adventure-background-video{opacity:1;filter:none}

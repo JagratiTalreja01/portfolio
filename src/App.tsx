@@ -170,7 +170,7 @@ export default function App() {
       </nav>
     </header>
     <main>
-      <section id="home" className="photo-panel hero-panel" style={background('media/images/adventure-motorcycle.webp')}>
+      <section id="home" className="photo-panel hero-panel" style={background('media/images/adventure-motorcycle.jpg')}>
         <div className="hero-note">Highly motivated individual aiming to achieve high career growth through continuous learning.</div>
         <div className="hero-name"><span>HI! I’M</span><h1>JAGRATI<br/>TALREJA</h1><p>Ph.D. · Data Science & Machine Learning<br/>AI/ML Engineer · Geospatial Data Scientist</p></div>
         <a className="scroll-cue" href="#about">Scroll ↓</a>
@@ -223,7 +223,7 @@ export default function App() {
       </section>
 
       <section id="life" className="black-panel adventure-panel">
-        <video className="adventure-background-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1}>
+        <video className="adventure-background-video" autoPlay muted loop playsInline preload="auto" poster={asset('media/images/aurora-background-poster.webp')} aria-hidden="true" tabIndex={-1}>
           <source src={asset('media/videos/adventures/aurora-background.webm')} type="video/webm"/>
         </video>
         <p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
