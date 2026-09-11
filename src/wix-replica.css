@@ -10,13 +10,13 @@
 
 
 /* Requested portfolio refinements */
-.hero-note{font-size:1.08rem}
+.hero-note{max-width:55ch;font-size:clamp(1.15rem,1.6vw,1.45rem);line-height:1.8}
 .skills-panel{background-position:center 38%}
 .patent-first{margin:0 0 55px;border-top:0;border-bottom:2px solid var(--lime);padding:0 0 25px}
 .timeline-groups{display:grid;gap:70px}
 .timeline-group>h3{margin:0 0 30px;color:#16855c;font-size:.9rem;letter-spacing:.24em}
 .timeline-title h2{font-size:clamp(3rem,5.5vw,6.4rem)}
-@media(max-width:760px){.hero-note{font-size:.82rem}.timeline-groups{gap:50px}}
+@media(max-width:760px){.hero-note{font-size:1rem;line-height:1.65}.timeline-groups{gap:50px}}
 
 
 /* Research and milestone refinements */
