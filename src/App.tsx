@@ -172,8 +172,17 @@ export default function App() {
     <main>
       <section id="home" className="photo-panel hero-panel">
         <img className="hero-background-image" src={asset('media/images/adventure-motorcycle.jpg')} alt="" aria-hidden="true"/>
-        <div className="hero-note">Highly motivated individual aiming to achieve high career growth through continuous learning and utilizing my skills to progress professionally and personally.</div>
-        <div className="hero-name"><span>HI! I’M</span><h1>JAGRATI<br/>TALREJA</h1><p>Ph.D. · Data Science & Machine Learning<br/>AI/ML Engineer · Geospatial Data Scientist</p></div>
+        <div className="hero-note"><span>Highly motivated individual aiming to achieve high career growth through continuous learning and utilizing my skills to progress professionally and personally.</span></div>
+        <img className="hero-nasa-logo" src="https://static.wixstatic.com/media/42b789_b0df963f624a4ffe9f757490b9ff4c63~mv2.png/v1/fill/w_224,h_168,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/42b789_b0df963f624a4ffe9f757490b9ff4c63~mv2.png" alt="NASA"/>
+        <div className="hero-name">
+          <span>HI! I'M</span>
+          <h1>JAGRATI<br/>TALREJA</h1>
+          <p>
+            <span>Ph.D. (Data Science &amp; Machine Learning)</span>
+            <span>Artificial Intelligence &amp; Deep Learning Engineer</span>
+            <span>Geospatial Data Analyst</span>
+          </p>
+        </div>
         <a className="scroll-cue" href="#about">Scroll ↓</a>
       </section>
 
