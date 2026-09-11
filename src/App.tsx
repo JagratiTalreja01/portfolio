@@ -192,8 +192,29 @@ export default function App() {
       </section>
 
       <section id="skills" className="photo-panel skills-panel" style={background('media/images/black-jacket-portrait.webp')}>
-        <div className="section-card"><p className="kicker">PROFESSIONAL</p><h2>SKILLS</h2>
+        <div className="section-card skills-card"><p className="kicker">PROFESSIONAL</p><h2>SKILLS</h2>
           <div className="skill-lines">{skillGroups.slice(0, 7).map((group, i) => <div key={group.name}><span>{group.name}</span><i style={{width:`${92-i*4}%`}} /></div>)}</div>
+          <div className="skills-details">
+            <section><h3>ACHIEVEMENTS</h3><ul>
+              <li>GRE 304 (2020)</li>
+              <li>IELTS 6.5 (2019)</li>
+              <li>Gold Medal for Excellence in Institutional Academia (2017)</li>
+              <li>JEE MAINS Qualified (2015)</li>
+            </ul></section>
+            <section><h3>RESEARCH INTEREST</h3><ul>
+              <li>Geospatial Data Analysis &amp; Remote Sensing</li>
+              <li>Artificial Intelligence</li>
+              <li>Deep Learning</li>
+              <li>Machine Learning</li>
+              <li>Data Science</li>
+              <li>Digital Image/Video Processing</li>
+              <li>Satellite Imaging</li>
+              <li>Computer Vision</li>
+              <li>Applied Mathematics</li>
+              <li>Robotics</li>
+              <li>Ethical Hacking</li>
+            </ul></section>
+          </div>
         </div>
       </section>
 
