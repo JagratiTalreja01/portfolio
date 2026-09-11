@@ -208,7 +208,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="photo-panel credentials-panel" style={background('media/images/chula-engineering.webp')}>
+      <section className="photo-panel credentials-panel" style={background('media/images/certificates-milestones-background.jpg')}>
         <p className="kicker">ACHIEVEMENTS</p><h2>CERTIFICATES & MILESTONES</h2>
         <div className="certificate-gallery">
           {[
