@@ -18,8 +18,8 @@ export default function App() {
 
     const videos = Array.from(mediaRoot.querySelectorAll('video'))
     const adventureSection = mediaRoot.querySelector<HTMLElement>('#life')
-    const adventureVideos = videos.filter(video => video.closest('#life'))
-    const otherVideos = videos.filter(video => !video.closest('#life'))
+    const adventureVideos = videos.filter(video => video.closest('#life') && !video.classList.contains('adventure-background-video'))
+    const otherVideos = videos.filter(video => !adventureVideos.includes(video))
     const visibleVideos = new Set<HTMLVideoElement>()
     const activeAdventureVideos = new Set<HTMLVideoElement>()
     let adventureSectionVisible = false
@@ -139,7 +139,7 @@ export default function App() {
   }, [])
 
   const playVisibleAdventures = () => {
-    const videos = Array.from(mediaRootRef.current?.querySelectorAll<HTMLVideoElement>('#life video') ?? [])
+    const videos = Array.from(mediaRootRef.current?.querySelectorAll<HTMLVideoElement>('#life .adventure-reels video') ?? [])
     const visible = videos
       .map(video => ({ video, rect: video.getBoundingClientRect() }))
       .filter(({ rect }) => rect.bottom > 0 && rect.top < window.innerHeight)
@@ -222,7 +222,11 @@ export default function App() {
         </div>
       </section>
 
-      <section id="life" className="black-panel"><p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
+      <section id="life" className="black-panel adventure-panel">
+        <video className="adventure-background-video" autoPlay muted loop playsInline preload="metadata" aria-hidden="true" tabIndex={-1}>
+          <source src={asset('media/videos/adventures/aurora-background.webm')} type="video/webm"/>
+        </video>
+        <p className="kicker">BEYOND RESEARCH</p><h2>INTERESTS & ADVENTURES</h2>
         <button className="adventure-play" type="button" onClick={playVisibleAdventures}>▶ Play visible videos</button>
         <div className="adventure-reels">
           {[
