@@ -226,15 +226,15 @@ export default function App() {
         <button className="adventure-play" type="button" onClick={playVisibleAdventures}>▶ Play visible videos</button>
         <div className="adventure-reels">
           {[
-            ['01-skydiving.mp4', 'Skydiving'],
-            ['02-driving.mp4', 'Driving'],
-            ['03-bowling.mp4', 'Bowling'],
-            ['04-swimming.mp4', 'Swimming'],
-            ['05-workout.mp4', 'Workout'],
-            ['06-biking.mp4', 'Biking'],
-            ['07-jetski.mp4', 'Jet Ski'],
-            ['08-parasailing.mp4', 'Parasailing'],
-            ['09-rubiks-cube.mp4', "Rubik's Cube"],
+            ['01-skydiving-v2.mp4', 'Skydiving'],
+            ['02-driving-v2.mp4', 'Driving'],
+            ['03-bowling-v2.mp4', 'Bowling'],
+            ['04-swimming-v2.mp4', 'Swimming'],
+            ['05-workout-v2.mp4', 'Workout'],
+            ['06-biking-v2.mp4', 'Biking'],
+            ['07-jetski-v2.mp4', 'Jet Ski'],
+            ['08-parasailing-v2.mp4', 'Parasailing'],
+            ['09-rubiks-cube-v2.mp4', "Rubik's Cube"],
           ].map(([src, title]) => <figure key={src}>
             <video autoPlay muted loop playsInline preload="metadata" controls controlsList="nodownload noplaybackrate" aria-label={title}><source src={asset(`media/videos/adventures/${src}`)} type="video/mp4"/></video>
             <figcaption>{title}</figcaption>
