@@ -69,7 +69,17 @@
 .adventure-panel{position:relative;isolation:isolate;overflow:clip;background:#050505;padding:0}
 .adventure-panel::before{display:none}
 .adventure-content{position:relative;z-index:2;padding:8rem 7vw}
+.adventure-content>h2{font-size:clamp(2.2rem,5vw,5.5rem);letter-spacing:.12em;margin:.15em 0 .6em}
+.aurora-side-note{position:absolute;top:31rem;margin:0;color:#fff;font-size:clamp(.78rem,1vw,1rem);font-weight:700;letter-spacing:.16em;text-transform:uppercase;writing-mode:vertical-rl;text-shadow:0 2px 12px #000,0 0 4px #000;white-space:nowrap}
+.aurora-side-note-left{left:2vw;transform:rotate(180deg)}
+.aurora-side-note-right{right:2vw}
 .adventure-background-video{display:block;position:sticky;top:0;z-index:0;width:100%;height:100vh;margin-bottom:-100vh;object-fit:cover;object-position:center;opacity:1;filter:none;pointer-events:none}
+@media(max-width:1120px){.aurora-side-note{display:none}}
 
 /* Keep all photographic and video backgrounds at their original brightness. */
 .hero-panel::after,.skills-panel::after,.dark-photo-panel::after,.credentials-panel::after,.adventure-panel::before{display:none}
+
+/* Bright, unshaded hero image matching the Wix presentation. */
+.hero-panel{background:none;overflow:hidden}
+.hero-background-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 42%;filter:brightness(1.14) saturate(1.04);transform:scale(1.002)}
+@media(max-width:850px){.hero-background-image{object-position:57% center}}
