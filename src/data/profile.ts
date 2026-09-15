@@ -27,7 +27,6 @@ export const profile = {
     academicEmail: 'jtalreja@ncat.edu',
     github: 'https://github.com/JagratiTalreja01',
     linkedin: 'https://www.linkedin.com/in/dr-jagrati-talreja-phd-113054136',
-    wix: 'https://talrejajagrati01.wixsite.com/tj01',
     // Fill these in and the icons appear automatically.
     scholar: '[ADD GOOGLE SCHOLAR URL]',
     orcid: '[ADD ORCID URL]',
