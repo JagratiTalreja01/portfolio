@@ -308,7 +308,7 @@ export default function App() {
       </section>
 
       <section id="contact" className="contact-panel"><div><p className="kicker">CONTACT</p><h2>Let’s connect.</h2><p>Greensboro, North Carolina</p><a href={`mailto:${profile.links.email}`}>{profile.links.email}</a></div>
-        <div className="contact-links"><a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a><a href={profile.links.wix} target="_blank" rel="noreferrer">Wix Portfolio</a><a href={asset(profile.documents.resume)} target="_blank" rel="noreferrer">Resume</a><a href={asset(profile.documents.cv)} target="_blank" rel="noreferrer">CV</a></div>
+        <div className="contact-links"><a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a><a href={asset(profile.documents.resume)} target="_blank" rel="noreferrer">Resume</a><a href={asset(profile.documents.cv)} target="_blank" rel="noreferrer">CV</a></div>
       </section>
     </main>
   </div>
