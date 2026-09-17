@@ -239,6 +239,24 @@
   .contact-panel h2{font-size:clamp(2.7rem,14vw,4rem);line-height:1}
   .contact-panel>div>a{display:block;max-width:100%;overflow-wrap:anywhere}
   .contact-links{grid-template-columns:1fr}
+
+  /* Phone-only full-media treatment. The sharp image/video uses contain so
+     no part is cut off; the matching background fills the portrait viewport. */
+  .hero-panel,.adventure-panel,.moments-panel{
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+  }
+  .hero-background-image,.adventure-background-video,.moments-background-video{
+    object-fit:contain;
+    object-position:center;
+  }
+  .hero-background-image{
+    filter:brightness(1.14) saturate(1.04) drop-shadow(0 0 22px #0005);
+  }
+  .adventure-background-video,.moments-background-video{
+    filter:drop-shadow(0 0 22px #0007);
+  }
 }
 
 @media(max-width:380px){
