@@ -170,7 +170,7 @@ export default function App() {
       </nav>
     </header>
     <main>
-      <section id="home" className="photo-panel hero-panel">
+      <section id="home" className="photo-panel hero-panel" style={background('media/images/adventure-motorcycle.jpg')}>
         <img className="hero-background-image" src={asset('media/images/adventure-motorcycle.jpg')} alt="" aria-hidden="true"/>
         <div className="hero-note"><span>Highly motivated individual aiming to achieve high career growth through continuous learning and utilizing my skills to progress professionally and personally.</span></div>
         <img className="hero-nasa-logo" src={asset('media/images/nasa-logo-wix.png')} alt="NASA"/>
@@ -263,7 +263,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="life" className="black-panel adventure-panel">
+      <section id="life" className="black-panel adventure-panel" style={background('media/images/aurora-background-poster.webp')}>
         <video className="adventure-background-video" autoPlay muted loop playsInline preload="auto" poster={asset('media/images/aurora-background-poster.webp')} aria-hidden="true" tabIndex={-1}>
           <source src={asset('media/videos/adventures/aurora-background.webm')} type="video/webm"/>
         </video>
@@ -291,7 +291,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="moments-panel">
+      <section className="moments-panel" style={background('media/images/moments-background-poster.jpg')}>
         <video className="moments-background-video" autoPlay muted loop playsInline preload="auto" aria-hidden="true" tabIndex={-1}>
           <source src={asset('media/videos/moments-background.mp4')} type="video/mp4"/>
         </video>
