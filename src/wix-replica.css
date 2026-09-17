@@ -126,3 +126,124 @@
 .scholarship-strip{margin-top:58px;padding-top:28px;border-top:2px solid var(--lime)}
 .scholarship-strip ul{margin:0;padding-left:20px;display:grid;gap:12px;color:#ddd;font-size:.88rem;line-height:1.55}
 @media(max-width:700px){.research-section-title{align-items:flex-start}.research-section-title img{width:78px;max-height:72px}.scholarship-strip{margin-top:42px}.scholarship-strip ul{font-size:.82rem}}
+
+/* Mobile browsers handle fixed backgrounds and 100vh inconsistently. Use the
+   visible mobile viewport so every background fully covers its section. */
+@media(max-width:850px){
+  .photo-panel,.dark-photo-panel{
+    min-height:100svh;
+    background-attachment:scroll;
+    background-size:cover;
+    background-repeat:no-repeat;
+  }
+  .hero-panel{min-height:100svh}
+  .hero-background-image{
+    min-height:100svh;
+    height:100%;
+    object-fit:cover;
+    transform:none;
+  }
+  .adventure-background-video,.moments-background-video{
+    height:100svh;
+    min-height:100svh;
+    object-fit:cover;
+  }
+}
+
+/* Responsive system: desktop remains unchanged; tablets and phones reflow. */
+.wix-replica{overflow-x:clip}
+.wix-replica,.wix-replica *,.wix-replica *::before,.wix-replica *::after{box-sizing:border-box}
+.wix-replica img,.wix-replica video{max-width:100%}
+
+@media(max-width:1100px){
+  .wix-nav{padding-inline:3vw}
+  .wix-nav nav{gap:14px;font-size:.64rem}
+  .light-panel{padding:7rem 7vw}
+  .dark-photo-panel{padding:7rem 5vw}
+  .timeline-panel{padding:7rem 6vw;gap:5vw}
+  .credentials-panel{padding:7rem 6vw}
+  .paper-sheet{width:min(820px,100%);padding:36px}
+  .contact-panel{gap:6vw;padding:7rem 6vw}
+  .moments-content{padding:7rem 7vw}
+  .adventure-content{padding:7rem 6vw}
+}
+
+@media(max-width:850px){
+  .wix-nav nav{max-height:calc(100svh - 64px);overflow-y:auto;box-shadow:0 18px 35px #0009}
+  .wix-nav nav a{padding:7px 0}
+  .compact-about{min-height:auto}
+  .compact-about h2{font-size:clamp(2.6rem,9vw,5rem)}
+  .compact-about>p{font-size:1.05rem;line-height:1.65}
+  .research-panel{padding:6.5rem 5vw}
+  .research-heading h2{font-size:clamp(3rem,11vw,5.2rem)}
+  .paper-sheet{margin:0;width:100%;padding:30px}
+  .timeline-panel{padding:6.5rem 6vw}
+  .timeline-title h2{font-size:clamp(2.8rem,10vw,5.2rem)}
+  .timeline-list article{grid-template-columns:105px 1fr;padding-bottom:48px}
+  .credentials-panel{padding:6.5rem 6vw}
+  .credentials-panel>h2,.adventure-content>h2,.moments-content>h2{font-size:clamp(2.1rem,8vw,4rem);overflow-wrap:anywhere}
+  .contact-panel{min-height:auto;gap:3rem;padding:6.5rem 8vw}
+  .contact-panel>div,.contact-links{width:100%}
+  .contact-links{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .contact-links a{padding:13px 16px}
+}
+
+@media(max-width:600px){
+  .wix-nav{height:58px;padding-inline:16px}
+  .wix-nav nav{top:58px;max-height:calc(100svh - 58px)}
+  .wix-logo{width:34px;height:34px}
+  .hero-panel{min-height:100svh}
+  .hero-background-image{object-position:45% center}
+  .hero-note{display:block;top:4.6rem;left:16px;width:calc(100% - 112px);font-size:.68rem;line-height:1.45;letter-spacing:.06em}
+  .hero-nasa-logo{top:4.5rem;right:14px;width:72px}
+  .hero-name{right:4vw;bottom:7%;width:92%;padding:14px}
+  .hero-name>span{font-size:1.15rem;letter-spacing:.14em}
+  .hero-name h1{font-size:clamp(2.25rem,12vw,3.25rem);letter-spacing:.08em;margin:.28em 0}
+  .hero-name p{font-size:clamp(.66rem,3vw,.78rem);line-height:1.5;letter-spacing:.015em}
+  .scroll-cue{bottom:12px;font-size:.58rem}
+  .light-panel{padding:5.5rem 20px}
+  .compact-about h2{font-size:clamp(2.25rem,11vw,3.5rem);overflow-wrap:anywhere}
+  .quick-links{display:grid;grid-template-columns:1fr;gap:10px;width:100%}
+  .quick-links a{text-align:center}
+  .skills-panel{padding:5.5rem 0}
+  .skills-card{width:calc(100% - 32px);padding:22px}
+  .skills-card h2{font-size:clamp(2rem,12vw,3.2rem);letter-spacing:.08em}
+  .skills-details h3{font-size:.95rem;letter-spacing:.08em}
+  .research-panel{padding:5.5rem 16px}
+  .research-heading h2{font-size:clamp(2.65rem,15vw,4.2rem)}
+  .paper-sheet{padding:20px}
+  .research-section-title{gap:12px}
+  .research-section-title h2,.patent-strip h2{font-size:clamp(1.7rem,9vw,2.8rem);letter-spacing:.07em;overflow-wrap:anywhere}
+  .research-section-title img{width:60px;max-height:60px}
+  .paper-list article{grid-template-columns:42px minmax(0,1fr);gap:10px}
+  .paper-list h3{font-size:.86rem;overflow-wrap:anywhere}
+  .paper-list article>a,.paper-list article>em{grid-column:2}
+  .patent-strip>div{flex-direction:column;gap:6px}
+  .scholarship-strip ul{padding-left:17px;font-size:.76rem}
+  .timeline-panel{padding:5.5rem 20px}
+  .timeline-title h2{font-size:clamp(2.45rem,12vw,3.7rem);letter-spacing:.045em}
+  .timeline-list article{grid-template-columns:1fr;padding:0 0 42px 20px}
+  .timeline-list time{margin-bottom:8px}
+  .credentials-panel{padding:5.5rem 18px}
+  .credentials-panel>h2,.adventure-content>h2,.moments-content>h2{font-size:clamp(1.85rem,10vw,3rem);letter-spacing:.07em}
+  .certificate-gallery{gap:14px}
+  .adventure-content,.moments-content{padding:5.5rem 18px}
+  .adventure-play{width:100%;margin:-.5rem 0 2rem}
+  .adventure-reels{grid-template-columns:1fr;max-width:360px;gap:34px}
+  .adventure-reels figcaption{font-size:1.2rem}
+  .wix-moments-grid{grid-template-columns:1fr;gap:18px}
+  .wix-moments-grid .half,.wix-moments-grid .wide,.wix-moments-grid .portrait,.wix-moments-grid .third,.wix-moments-grid .narrow,.wix-moments-grid .full{grid-column:1;aspect-ratio:auto}
+  .wix-moments-grid img{height:auto;max-height:none}
+  .wix-moments-grid video{height:auto;aspect-ratio:4/3;object-fit:cover}
+  .contact-panel{padding:5.5rem 20px;gap:2.25rem}
+  .contact-panel h2{font-size:clamp(2.7rem,14vw,4rem);line-height:1}
+  .contact-panel>div>a{display:block;max-width:100%;overflow-wrap:anywhere}
+  .contact-links{grid-template-columns:1fr}
+}
+
+@media(max-width:380px){
+  .hero-note{font-size:.62rem;width:calc(100% - 96px)}
+  .hero-nasa-logo{width:62px}
+  .hero-name h1{font-size:2.15rem}
+  .hero-name p{font-size:.62rem}
+}
