@@ -222,10 +222,10 @@ export default function App() {
         <div className="research-heading"><h2>RESEARCH</h2></div>
         <div className="paper-sheet">
           <div className="patent-strip patent-first"><div className="research-section-title"><h2>PATENTS</h2><img src={asset('media/images/patent-icon.png')} alt="Patented seal"/></div>{patents.map(p => <div key={p.id}><b>{p.title}</b><span>{p.number}</span></div>)}</div>
-          <div className="research-section-title"><h2>PUBLICATIONS</h2><img src={asset('media/images/publication-icon.png')} alt="Published research papers"/></div>
+          <div className="research-section-title"><h2>PUBLICATIONS</h2></div>
           <div className="paper-list">{publications.filter(pub => pub.status !== 'under-review').map(pub => <article key={pub.id}><span>{pub.year}</span><div><h3>{pub.title}</h3><p>{pub.venue}</p></div>{pub.doi ? <a href={`https://doi.org/${pub.doi}`} target="_blank" rel="noreferrer">DOI</a> : <em>{pub.status}</em>}</article>)}</div>
           <section className="scholarship-strip">
-            <div className="research-section-title"><h2>SCHOLARSHIPS</h2><img src={asset('media/images/scholarship-icon.png')} alt="Scholarship"/></div>
+            <div className="research-section-title"><h2>SCHOLARSHIPS</h2></div>
             <ul>
               <li>Receiving a grant from NASA and NSF for research on deep learning-based remote sensing applications.</li>
               <li>Received the highest five-year Ph.D. scholarship at Chulalongkorn University, Bangkok, Thailand: The Second Century Fund (C2F), High Efficiency Ph.D. Student, 1st Batch 2019.</li>
