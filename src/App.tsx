@@ -10,6 +10,7 @@ const background = (path: string) => ({ backgroundImage: `url("${asset(path)}")`
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [siteStats, setSiteStats] = useState({ views: '—', visitors: '—' })
   const mediaRootRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -136,6 +137,36 @@ export default function App() {
       })
       visibleVideos.clear()
     }
+  }, [])
+
+  useEffect(() => {
+    const controller = new AbortController()
+    const counterUrl = 'https://counterapi.com/api/jagratitalreja01.github.io/view/portfolio-home'
+
+    const loadSiteStats = async () => {
+      try {
+        const viewResponse = await fetch(counterUrl, { signal: controller.signal, cache: 'no-store' })
+        if (!viewResponse.ok) throw new Error('View counter unavailable')
+        const viewData = await viewResponse.json() as { value?: number }
+
+        const visitorResponse = await fetch(
+          `${counterUrl}?readOnly=true&unique=true`,
+          { signal: controller.signal, cache: 'no-store' },
+        )
+        if (!visitorResponse.ok) throw new Error('Visitor counter unavailable')
+        const visitorData = await visitorResponse.json() as { value?: number }
+
+        setSiteStats({
+          views: typeof viewData.value === 'number' ? viewData.value.toLocaleString() : '—',
+          visitors: typeof visitorData.value === 'number' ? visitorData.value.toLocaleString() : '—',
+        })
+      } catch (error) {
+        if ((error as Error).name !== 'AbortError') setSiteStats({ views: '—', visitors: '—' })
+      }
+    }
+
+    void loadSiteStats()
+    return () => controller.abort()
   }, [])
 
   const playVisibleAdventures = () => {
@@ -307,7 +338,11 @@ export default function App() {
         </div>
       </section>
 
-      <section id="contact" className="contact-panel"><div><p className="kicker">CONTACT</p><h2>Let’s connect.</h2><p>Greensboro, North Carolina</p><a href={`mailto:${profile.links.email}`}>{profile.links.email}</a></div>
+      <section id="contact" className="contact-panel"><div><p className="kicker">CONTACT</p><h2>Let’s connect.</h2><p>Greensboro, North Carolina</p><a href={`mailto:${profile.links.email}`}>{profile.links.email}</a>
+        <div className="site-stats" aria-label="Portfolio traffic">
+          <span><strong>{siteStats.views}</strong> Views</span>
+          <span><strong>{siteStats.visitors}</strong> Visitors</span>
+        </div></div>
         <div className="contact-links"><a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a><a href={asset(profile.documents.resume)} target="_blank" rel="noreferrer">Resume</a><a href={asset(profile.documents.cv)} target="_blank" rel="noreferrer">CV</a></div>
       </section>
     </main>

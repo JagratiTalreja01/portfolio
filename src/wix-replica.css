@@ -265,3 +265,10 @@
   .hero-name h1{font-size:2.15rem}
   .hero-name p{font-size:.62rem}
 }
+
+
+/* Anonymous public portfolio traffic counters. */
+.site-stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.site-stats span{display:inline-flex;align-items:baseline;gap:7px;padding:9px 12px;border:1px solid #e7ff5766;background:#00000026;color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.site-stats strong{color:var(--lime);font-size:1.05rem;letter-spacing:.04em}
+@media(max-width:600px){.site-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%}.site-stats span{justify-content:center}}
