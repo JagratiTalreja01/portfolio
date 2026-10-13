@@ -189,7 +189,7 @@ export default function App() {
 
       <section id="about" className="light-panel compact-about">
         <p className="kicker">ABOUT</p><h2>Dr. Jagrati Talreja</h2><p>{profile.statement}</p>
-        <div className="quick-links"><a href={asset(profile.documents.resume)} target="_blank">Résumé</a><a href={asset(profile.documents.cv)} target="_blank">Curriculum Vitae</a></div>
+        <div className="quick-links"><a href={asset(profile.documents.resume)} target="_blank">Résumé</a></div>
       </section>
 
       <section id="skills" className="photo-panel skills-panel" style={background('media/images/black-jacket-portrait.webp')}>
@@ -310,7 +310,7 @@ export default function App() {
 
       <section id="contact" className="contact-panel"><div><p className="kicker">CONTACT</p><h2>Let’s connect.</h2><p>Greensboro, North Carolina</p><a href={`mailto:${profile.links.email}`}>{profile.links.email}</a>
         </div>
-        <div className="contact-links"><a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a><a href={asset(profile.documents.resume)} target="_blank" rel="noreferrer">Resume</a><a href={asset(profile.documents.cv)} target="_blank" rel="noreferrer">CV</a></div>
+        <div className="contact-links"><a href={profile.links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a><a href={profile.links.github} target="_blank" rel="noreferrer">GitHub</a><a href={asset(profile.documents.resume)} target="_blank" rel="noreferrer">Resume</a></div>
       </section>
     </main>
   </div>
